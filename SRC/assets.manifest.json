@@ -1,26 +1,20 @@
 {
   "logos": [
-    "logos/logosiluet.png",
-    "logos/Charter.png",
-    "logos/INDOCASA-LOGO-BLACK-WITH-TAGLINE.png",
-    "logos/Indocasa.jpeg",
-    "logos/Inkase.jpg",
-    "logos/Interior Tonic.jpg",
-    "logos/Logo Putera Teknik.png",
-    "logos/Mortar Utama.png",
-    "logos/Renova.jpg",
-    "logos/Tata Bersama.png"
+    {
+      "file": "logosiluet.png",
+      "title": "Logo SAN"
+    }
   ],
   "partners": [
-    "logos/Charter.png",
-    "logos/INDOCASA-LOGO-BLACK-WITH-TAGLINE.png",
-    "logos/Indocasa.jpeg",
-    "logos/Inkase.jpg",
-    "logos/Interior Tonic.jpg",
-    "logos/Logo Putera Teknik.png",
-    "logos/Mortar Utama.png",
-    "logos/Renova.jpg",
-    "logos/Tata Bersama.png"
+    "Charter.png",
+    "INDOCASA-LOGO-BLACK-WITH-TAGLINE.png",
+    "Indocasa.jpeg",
+    "Inkase.jpg",
+    "Interior Tonic.jpg",
+    "Logo Putera Teknik.png",
+    "Mortar Utama.png",
+    "Renova.jpg",
+    "Tata Bersama.png"
   ],
   "beforeAfter": [
     {

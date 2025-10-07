@@ -14,8 +14,13 @@ interface Catalog {
   file: string;
 }
 
+interface LogoItem {
+  file: string;
+  title?: string;
+}
+
 interface AssetsManifest {
-  logos: string[];
+  logos: LogoItem[];
   partners: string[];
   beforeAfter: BeforeAfterPair[];
   catalogs: Catalog[];
@@ -80,21 +85,22 @@ function buildManifest(): AssetsManifest {
     (f) => f.startsWith(logosDir) && isImageFile(f)
   );
 
-  const mainLogos: string[] = [];
+  const mainLogo: LogoItem | null = null;
   const partnerLogos: string[] = [];
 
   logoFiles.forEach((file) => {
-    const relativePath = path.relative(ASSETS_DIR, file).replace(/\\/g, '/');
-    const filename = path.basename(file).toLowerCase();
+    const filename = path.basename(file);
+    const filenameLower = filename.toLowerCase();
 
-    if (filename.includes('logosiluet') || filename.includes('san') || filename.includes('logo-san')) {
-      mainLogos.push(relativePath);
+    if (filenameLower.includes('logosiluet') || filenameLower === 'logosiluet.png') {
+      // Skip - main logo is hardcoded
     } else {
-      partnerLogos.push(relativePath);
+      partnerLogos.push(filename);
     }
   });
 
-  manifest.logos = [...mainLogos, ...partnerLogos];
+  // Hardcode main logo
+  manifest.logos = [{ file: 'logosiluet.png', title: 'Logo SAN' }];
   manifest.partners = partnerLogos;
 
   // Process before/after images

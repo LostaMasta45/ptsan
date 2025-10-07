@@ -117,13 +117,15 @@ export function BreadcrumbSchema({ items }: { items: Array<{ name: string; url: 
 }
 
 export function OrganizationSchema() {
+  const logoUrl = '/media/logos/logosiluet.png';
+  
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: site.brand,
     alternateName: site.short,
     url: typeof window !== 'undefined' ? window.location.origin : '',
-    logo: typeof window !== 'undefined' ? `${window.location.origin}/media/logos/logosiluet.png` : '',
+    logo: typeof window !== 'undefined' ? `${window.location.origin}${logoUrl}` : logoUrl,
     description: site.description,
     address: {
       '@type': 'PostalAddress',

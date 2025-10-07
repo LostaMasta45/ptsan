@@ -3,14 +3,17 @@ import Image from 'next/image';
 import { site } from '@/config/site';
 import { Building2, Users, Award, Target } from 'lucide-react';
 import assetsManifest from '@/src/assets.manifest.json';
+import { mediaSrc } from '@/lib/media';
 
 export const metadata: Metadata = {
   title: 'Tentang Kami',
   description: site.description,
 };
 
+type LogoItem = { file: string; title?: string };
+
 export default function TentangKami() {
-  const mainLogo = assetsManifest.logos[0];
+  const mainLogo = (assetsManifest.logos as LogoItem[])[0];
 
   return (
     <div className="py-20">
@@ -19,11 +22,12 @@ export default function TentangKami() {
           <div className="text-center mb-12">
             {mainLogo && (
               <Image
-                src={`/media/${mainLogo}`}
-                alt={site.brand}
+                src={mediaSrc(mainLogo.file)}
+                alt={mainLogo.title || site.brand}
                 width={200}
                 height={80}
                 className="h-20 w-auto mx-auto mb-6"
+                priority
               />
             )}
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{site.brand}</h1>

@@ -3,9 +3,12 @@ import Image from 'next/image';
 import { MapPin, Mail, Phone } from 'lucide-react';
 import { site } from '@/config/site';
 import assetsManifest from '@/src/assets.manifest.json';
+import { mediaSrc } from '@/lib/media';
+
+type LogoItem = { file: string; title?: string };
 
 export function SiteFooter() {
-  const mainLogo = assetsManifest.logos[0];
+  const mainLogo = (assetsManifest.logos as LogoItem[])[0];
 
   return (
     <footer className="border-t bg-slate-50">
@@ -14,21 +17,22 @@ export function SiteFooter() {
           <div className="space-y-4">
             {mainLogo && (
               <Image
-                src={`/media/${mainLogo}`}
-                alt={site.short}
+                src={mediaSrc(mainLogo.file)}
+                alt={mainLogo.title || site.short}
                 width={120}
                 height={40}
                 className="h-10 w-auto"
+                priority
               />
             )}
             <p className="text-sm text-muted-foreground">
               {site.tagline}
             </p>
             <div className="flex flex-wrap gap-2">
-              {assetsManifest.partners.slice(0, 6).map((logo, idx) => (
+              {(assetsManifest.partners as string[]).slice(0, 6).map((fileName, idx) => (
                 <Image
                   key={idx}
-                  src={`/media/${logo}`}
+                  src={mediaSrc(fileName)}
                   alt="Partner"
                   width={60}
                   height={30}

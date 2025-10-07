@@ -2,17 +2,25 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import assetsManifest from '@/src/assets.manifest.json';
 
-const partners = [
-  { name: "Indocasa", href: "#", logoSrc: "/assets/partnership/indocasa.png" },
-  { name: "Interior Tonic", href: "#", logoSrc: "/assets/partnership/Interior-Tonic.jpg" },
-  { name: "Renova", href: "#", logoSrc: "/assets/partnership/Renova.jpg" },
-  { name: "Charter Furniture", href: "#", logoSrc: "/assets/partnership/Charter.png" },
-  { name: "Mortar Utama (MU)", href: "#", logoSrc: "/assets/partnership/Mortar-Utama.png" },
-  { name: "Inkase", href: "#", logoSrc: "/assets/partnership/Inkase.png" },
-  { name: "Putera Teknik Solusi", href: "#", logoSrc: "/assets/partnership/Putera-Teknik.png" },
-  { name: "Tata Bersama", href: "#", logoSrc: "/assets/partnership/Tata Bersama.png" }
+const partnerNames = [
+  "Charter.png",
+  "INDOCASA-LOGO-BLACK-WITH-TAGLINE.png",
+  "Indocasa.jpeg",
+  "Inkase.jpg",
+  "Interior Tonic.jpg",
+  "Logo Putera Teknik.png",
+  "Mortar Utama.png",
+  "Renova.jpg",
+  "Tata Bersama.png"
 ];
+
+const partners = partnerNames.map(fileName => ({
+  name: fileName.replace(/\.(png|jpg|jpeg)$/i, '').replace(/-/g, ' '),
+  href: "#",
+  logoSrc: `/media/logos/${fileName}`
+}));
 
 export function Partnership() {
   return (
