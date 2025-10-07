@@ -15,18 +15,17 @@ export function SiteFooter() {
       <div className="container px-4 py-12">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            {mainLogo && (
-              <Image
-                src={mediaSrc(mainLogo.file)}
-                alt={mainLogo.title || site.short}
-                width={120}
-                height={40}
-                className="h-10 w-auto"
-                priority
-              />
-            )}
+            <Image
+              src="/media/logos/logo-san-colored.jpg"
+              alt={site.brand}
+              width={160}
+              height={60}
+              className="h-12 w-auto"
+              priority
+            />
             <p className="text-sm text-muted-foreground">
-              {site.tagline}
+              PT Semangat Anak Negeri (PT SAN) adalah penyedia jasa renovasi bangunan, konstruksi, dan drafter profesional. 
+              Dari desain CAD hingga eksekusi proyek—tepat waktu, transparan, dan berkualitas tinggi.
             </p>
             <div className="flex flex-wrap gap-2">
               {(assetsManifest.partners as string[]).slice(0, 6).map((fileName, idx) => (
