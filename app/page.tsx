@@ -1,3 +1,4 @@
+'use client'
 import { HeroSection } from '@/components/home/hero-section';
 import { ServiceChips } from '@/components/home/service-chips';
 import { TrustBar } from '@/components/home/trust-bar';

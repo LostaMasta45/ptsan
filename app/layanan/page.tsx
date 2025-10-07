@@ -1,3 +1,4 @@
+'use client'
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Hammer, Building2, Paintbrush, Ruler, Wrench, FileText, Download } from 'lucide-react';
