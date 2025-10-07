@@ -1,11 +1,10 @@
-'use client'
-import { Metadata } from 'next';
 import Link from 'next/link';
 import { Hammer, Building2, Paintbrush, Ruler, Wrench, FileText, Download } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { site } from '@/config/site';
 import assetsManifest from '@/src/assets.manifest.json';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Layanan',
