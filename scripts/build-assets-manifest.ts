@@ -21,7 +21,7 @@ interface AssetsManifest {
   catalogs: Catalog[];
 }
 
-const ASSETS_DIR = path.join(process.cwd(), 'src', 'assets');
+const ASSETS_DIR = path.join(process.cwd(), 'public', 'media');
 const OUTPUT_FILE = path.join(process.cwd(), 'src', 'assets.manifest.json');
 
 function getAllFiles(dirPath: string, arrayOfFiles: string[] = []): string[] {
