@@ -1,15 +1,19 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { FileText, Download, Eye, X } from 'lucide-react';
-import assetsManifest from '@/src/assets.manifest.json';
+import { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { FileText, Download, Eye, X } from 'lucide-react'
+import assetsManifest from '@/src/assets.manifest.json'
+
+// ✅ Tambah tipe eksplisit agar TS tidak mengira "never"
+type CatalogItem = { title: string; file: string }
+const catalogs: CatalogItem[] = (assetsManifest?.catalogs ?? []) as CatalogItem[]
 
 export function CatalogSection() {
-  const [viewingCatalog, setViewingCatalog] = useState<string | null>(null);
+  const [viewingCatalog, setViewingCatalog] = useState<string | null>(null)
 
-  if (assetsManifest.catalogs.length === 0) {
+  if (catalogs.length === 0) {
     return (
       <div className="text-center py-12 px-4 border border-dashed rounded-lg">
         <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
@@ -22,13 +26,13 @@ export function CatalogSection() {
           lalu rebuild project untuk menampilkan katalog.
         </p>
       </div>
-    );
+    )
   }
 
   return (
     <>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {assetsManifest.catalogs.map((catalog) => (
+        {catalogs.map((catalog) => (
           <Card key={catalog.file}>
             <CardHeader>
               <div className="flex items-start gap-3">
@@ -49,10 +53,7 @@ export function CatalogSection() {
                 <Eye className="mr-2 h-4 w-4" />
                 Lihat Katalog
               </Button>
-              <Button
-                asChild
-                className="w-full"
-              >
+              <Button asChild className="w-full">
                 <a
                   href={`/media/${catalog.file}`}
                   download={`${catalog.title}.pdf`}
@@ -73,13 +74,9 @@ export function CatalogSection() {
         >
           <div className="flex items-center justify-between p-4 border-b">
             <h2 className="text-lg font-semibold">
-              {assetsManifest.catalogs.find((c) => c.file === viewingCatalog)?.title}
+              {catalogs.find((c) => c.file === viewingCatalog)?.title}
             </h2>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setViewingCatalog(null)}
-            >
+            <Button variant="ghost" size="icon" onClick={() => setViewingCatalog(null)}>
               <X className="h-5 w-5" />
             </Button>
           </div>
@@ -113,5 +110,5 @@ export function CatalogSection() {
         </div>
       )}
     </>
-  );
+  )
 }
