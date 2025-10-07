@@ -87,7 +87,7 @@ function buildManifest(): AssetsManifest {
     const relativePath = path.relative(ASSETS_DIR, file).replace(/\\/g, '/');
     const filename = path.basename(file).toLowerCase();
 
-    if (filename.includes('san') || filename.includes('logo-san')) {
+    if (filename.includes('logosiluet') || filename.includes('san') || filename.includes('logo-san')) {
       mainLogos.push(relativePath);
     } else {
       partnerLogos.push(relativePath);

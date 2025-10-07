@@ -123,7 +123,7 @@ export function OrganizationSchema() {
     name: site.brand,
     alternateName: site.short,
     url: typeof window !== 'undefined' ? window.location.origin : '',
-    logo: typeof window !== 'undefined' ? `${window.location.origin}/media/logos/LOGO%20SAN%20Siluet.png` : '',
+    logo: typeof window !== 'undefined' ? `${window.location.origin}/media/logos/logosiluet.png` : '',
     description: site.description,
     address: {
       '@type': 'PostalAddress',
