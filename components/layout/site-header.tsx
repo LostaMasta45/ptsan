@@ -25,7 +25,7 @@ export function SiteHeader() {
       <nav className="container flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/media/logos/logosiluet.png"
+            src="/media/logos/logo-san-main.png"
             alt={site.short}
             width={40}
             height={40}
