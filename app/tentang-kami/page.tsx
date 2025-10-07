@@ -16,7 +16,7 @@ export default function TentangKami() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <Image
-              src="/media/logos/logo-san-main.png"
+              src="/media/logos/logoutama.png"
               alt={site.brand}
               width={200}
               height={80}
