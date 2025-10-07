@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   description: `Layanan renovasi, konstruksi, interior, drafter CAD, dan maintenance oleh ${site.brand}`,
 };
 
+// ---- Fix 2: beri tipe eksplisit untuk item katalog ----
+type CatalogItem = { title: string; file: string };
+const catalogs: CatalogItem[] = (assetsManifest?.catalogs ?? []) as CatalogItem[];
+
 const services = [
   {
     id: 'renovasi',
@@ -97,7 +101,8 @@ export default function LayananPage() {
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
+                      {/* ---- Fix 1: pakai service.title, bukan catalog.title ---- */}
+                      <CardTitle className="text-lg">{service.title}</CardTitle>
                       <CardDescription className="text-base">{service.description}</CardDescription>
                     </div>
                   </div>
@@ -117,11 +122,11 @@ export default function LayananPage() {
           })}
         </div>
 
-        {assetsManifest.catalogs.length > 0 && (
+        {catalogs.length > 0 && (
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl font-bold mb-6 text-center">Download Katalog</h2>
             <div className="grid gap-4 md:grid-cols-2">
-              {assetsManifest.catalogs.map((catalog, idx) => (
+              {catalogs.map((catalog, idx) => (
                 <Card key={idx}>
                   <CardHeader>
                     <div className="flex items-center gap-3">
