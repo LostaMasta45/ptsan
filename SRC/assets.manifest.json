@@ -1,0 +1,141 @@
+{
+  "logos": [
+    "logos/LOGO SAN Siluet putih.png",
+    "logos/LOGO SAN Siluet.png",
+    "logos/LOGO SAN white fill outline.png",
+    "logos/Charter.png",
+    "logos/INDOCASA-LOGO-BLACK-WITH-TAGLINE.png",
+    "logos/Indocasa.jpeg",
+    "logos/Inkase.jpg",
+    "logos/Interior Tonic.jpg",
+    "logos/Logo Putera Teknik.png",
+    "logos/Mortar Utama.png",
+    "logos/Renova.jpg",
+    "logos/Semangat Anak Negeri_slogan.jpg",
+    "logos/Tata Bersama.png"
+  ],
+  "partners": [
+    "logos/Charter.png",
+    "logos/INDOCASA-LOGO-BLACK-WITH-TAGLINE.png",
+    "logos/Indocasa.jpeg",
+    "logos/Inkase.jpg",
+    "logos/Interior Tonic.jpg",
+    "logos/Logo Putera Teknik.png",
+    "logos/Mortar Utama.png",
+    "logos/Renova.jpg",
+    "logos/Semangat Anak Negeri_slogan.jpg",
+    "logos/Tata Bersama.png"
+  ],
+  "beforeAfter": [
+    {
+      "id": "10",
+      "before": "before-after/10_before.png",
+      "after": "before-after/10_after.png"
+    },
+    {
+      "id": "11",
+      "before": "before-after/11_before.png",
+      "after": "before-after/11_after.png"
+    },
+    {
+      "id": "12",
+      "before": "before-after/12_before.png",
+      "after": "before-after/12_after.png"
+    },
+    {
+      "id": "13",
+      "before": "before-after/13_before.png",
+      "after": "before-after/13_after.png"
+    },
+    {
+      "id": "14",
+      "before": "before-after/14_before.png",
+      "after": "before-after/14_after.png"
+    },
+    {
+      "id": "15",
+      "before": "before-after/15_before.png",
+      "after": "before-after/15_after.png"
+    },
+    {
+      "id": "16",
+      "before": "before-after/16_before.png",
+      "after": "before-after/16_after.png"
+    },
+    {
+      "id": "17",
+      "before": "before-after/17_before.png",
+      "after": "before-after/17_after.png"
+    },
+    {
+      "id": "18",
+      "before": "before-after/18_before.png",
+      "after": "before-after/18_after.png"
+    },
+    {
+      "id": "19",
+      "before": "before-after/19_before.png",
+      "after": "before-after/19_after.png"
+    },
+    {
+      "id": "1",
+      "before": "before-after/1_before.png",
+      "after": "before-after/1_after.png"
+    },
+    {
+      "id": "20",
+      "before": "before-after/20_before.png",
+      "after": "before-after/20_after.png"
+    },
+    {
+      "id": "2",
+      "before": "before-after/2_before.png",
+      "after": "before-after/2_after.png"
+    },
+    {
+      "id": "3",
+      "before": "before-after/3_before.png",
+      "after": "before-after/3_after.png"
+    },
+    {
+      "id": "4",
+      "before": "before-after/4_before.png",
+      "after": "before-after/4_after.png"
+    },
+    {
+      "id": "5",
+      "before": "before-after/5_before.png",
+      "after": "before-after/5_after.png"
+    },
+    {
+      "id": "6",
+      "before": "before-after/6_before.png",
+      "after": "before-after/6_after.png"
+    },
+    {
+      "id": "7",
+      "before": "before-after/7_before.png",
+      "after": "before-after/7_after.png"
+    },
+    {
+      "id": "8",
+      "before": "before-after/8_before.png",
+      "after": "before-after/8_after.png"
+    },
+    {
+      "id": "9",
+      "before": "before-after/9_before.png",
+      "after": "before-after/9_after.png"
+    }
+  ],
+  "catalogs": [
+    {
+      "title": "Katalog Jasa SAN",
+      "file": "catalogs/Katalog Jasa SAN.pdf"
+    },
+    {
+      "title": "Katalog Kontruksi SAN",
+      "file": "catalogs/Katalog Kontruksi SAN.pdf"
+    }
+  ]
+}

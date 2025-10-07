@@ -1,0 +1,15 @@
+export const site = {
+  brand: 'PT Semangat Anak Negeri',
+  short: 'PT SAN',
+  tagline: 'Bangun Aman, Tepat Waktu, Hasil Berkualitas.',
+  baseCity: 'Mojokerto',
+  serviceAreas: ['Mojokerto', 'Jombang', 'Sidoarjo', 'Surabaya'],
+  whatsappLink: 'https://wa.me/62XXXXXXXXXX?text=Halo%20PT%20SAN,%20saya%20butuh%20konsultasi%20proyek',
+  email: 'halo@ptsan.co.id',
+  address: 'Jl. [Nama Jalan], Mojokerto, Indonesia',
+  experienceYears: '10+',
+  projectsDone: '300+',
+  warranty: 'Hingga 12 bulan (S&K berlaku)',
+  description: 'PT SAN adalah penyedia jasa renovasi bangunan, konstruksi, dan layanan gambar teknik (drafter). Kami memberi solusi menyeluruh dari perencanaan desain, pembuatan gambar kerja profesional (CAD), hingga pelaksanaan proyek dengan hasil rapi, kuat, dan sesuai kebutuhan. Berawal dari pengalaman di desain teknik & drafting furniture untuk pasar lokal maupun internasional, kami berkembang ke konstruksi & renovasi demi menghadirkan layanan yang terpercaya, transparan, dan profesional.',
+  keywords: 'jasa renovasi Mojokerto, kontraktor Mojokerto, jasa drafter CAD Mojokerto, gambar kerja rumah, renovasi ruko Mojokerto, konstruksi Mojokerto',
+}
