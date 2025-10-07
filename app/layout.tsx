@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingCTA } from "@/components/floating-cta";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/seo/json-ld";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -47,6 +48,7 @@ export default function RootLayout({
         <SiteFooter />
         <FloatingCTA />
         <Toaster position="top-center" richColors />
+        <SpeedInsights />
       </body>
     </html>
   );
