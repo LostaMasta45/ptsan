@@ -1,5 +1,5 @@
 Tingkatkan UX komponen slider before-after agar lebih interaktif dan tidak tergeser saat scroll.
-
+dibawah ini
 🔹 Framework: Next.js + Tailwind + Framer Motion (boleh pakai useState / useEffect).
 🔹 Desain tetap clean dan modern sesuai style PT SAN.
 🔹 Behavior yang diinginkan:
