@@ -103,7 +103,7 @@ export default function KontakPage() {
 
             <div className="bg-card rounded-lg border overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.8847!2d112.4338!3d-7.4681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjgnMDUuMiJTIDExMsKwMjYnMDEuNyJF!5e0!3m2!1sen!2sid!4v1234567890!5m2!1sen!2sid&q=Jl.+Suromulang+Selatan+X+No.4,+Mergelo,+Surodinawan,+Kec.+Prajurit+Kulon,+Kota+Mojokerto,+Jawa+Timur+61328"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.4908989614826!2d112.43166547501183!3d-7.468109292542853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e4fe82d9df1b%3A0x2856cd9f5a62ba24!2sPT.%20SEMANGAT%20ANAK%20NEGERI!5e0!3m2!1sen!2sid!4v1704891234567!5m2!1sen!2sid"
                 width="100%"
                 height="300"
                 style={{ border: 0 }}

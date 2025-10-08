@@ -125,7 +125,7 @@
   ],
   "catalogs": [
     {
-      "title": "Katalog Jasa SAN",
+      "title": "Katalog Jasa Desain",
       "file": "catalogs/Katalog Jasa SAN.pdf"
     },
     {
@@ -133,7 +133,7 @@
       "file": "catalogs/Katalog Kontruksi SAN.pdf"
     },
     {
-      "title": "Price list jasa SAN",
+      "title": "Katalog Pricelist",
       "file": "catalogs/Price list jasa SAN.pdf"
     }
   ]

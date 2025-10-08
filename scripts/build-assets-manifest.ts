@@ -143,9 +143,16 @@ function buildManifest(): AssetsManifest {
     (f) => f.startsWith(catalogsDir) && isPdfFile(f)
   );
 
+  // Custom title mapping for catalogs
+  const catalogTitleMap: { [key: string]: string } = {
+    'Katalog Jasa SAN.pdf': 'Katalog Jasa Desain',
+    'Price list jasa SAN.pdf': 'Katalog Pricelist',
+  };
+
   catalogFiles.forEach((file) => {
     const relativePath = path.relative(ASSETS_DIR, file).replace(/\\/g, '/');
-    const title = path.basename(file, path.extname(file));
+    const filename = path.basename(file);
+    const title = catalogTitleMap[filename] || path.basename(file, path.extname(file));
 
     manifest.catalogs.push({
       title,
