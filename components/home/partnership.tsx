@@ -18,7 +18,6 @@ const partnerNames = [
 
 const partners = partnerNames.map(fileName => ({
   name: fileName.replace(/\.(png|jpg|jpeg)$/i, '').replace(/-/g, ' '),
-  href: "#",
   logoSrc: `/media/logos/${fileName}`
 }));
 
@@ -43,9 +42,8 @@ export function Partnership() {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
           {partners.map((partner, index) => (
-            <motion.a
+            <motion.div
               key={partner.name}
-              href={partner.href}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -63,7 +61,7 @@ export function Partnership() {
                   className="h-10 w-auto max-w-full object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
 

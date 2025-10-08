@@ -76,8 +76,8 @@ export function HeroSection() {
             className="relative"
           >
             <BeforeAfterSlider
-              beforeImage="/before-after/1_before.png"
-              afterImage="/before-after/1_after.png"
+              beforeImage="/before-after/3_before.png"
+              afterImage="/before-after/3_after.png"
               title="Contoh Transformasi Proyek Kami"
             />
           </motion.div>

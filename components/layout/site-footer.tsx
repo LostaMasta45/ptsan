@@ -27,18 +27,6 @@ export function SiteFooter() {
               PT Semangat Anak Negeri (PT SAN) adalah penyedia jasa renovasi bangunan, konstruksi, dan drafter profesional. 
               Dari desain CAD hingga eksekusi proyek—tepat waktu, transparan, dan berkualitas tinggi.
             </p>
-            <div className="flex flex-wrap gap-2">
-              {(assetsManifest.partners as string[]).slice(0, 6).map((fileName, idx) => (
-                <Image
-                  key={idx}
-                  src={mediaSrc(fileName)}
-                  alt="Partner"
-                  width={60}
-                  height={30}
-                  className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity"
-                />
-              ))}
-            </div>
           </div>
 
           <div>
