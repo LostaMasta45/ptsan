@@ -24,8 +24,7 @@ export function SiteFooter() {
               priority
             />
             <p className="text-sm text-muted-foreground">
-              PT Semangat Anak Negeri (PT SAN) adalah penyedia jasa renovasi bangunan, konstruksi, dan drafter profesional. 
-              Dari desain CAD hingga eksekusi proyek—tepat waktu, transparan, dan berkualitas tinggi.
+              PT Semangat Anak Negeri adalah penyedia jasa renovasi bangunan, konstruksi, dan layanan gambar teknik (drafter) yang berlokasi di Mojokerto, Indonesia.
             </p>
           </div>
 
@@ -58,9 +57,9 @@ export function SiteFooter() {
                 <MapPin className="h-4 w-4 mt-0.5 text-primary shrink-0" />
                 <span className="text-muted-foreground">{site.address}</span>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-primary shrink-0" />
-                <a href={`mailto:${site.email}`} className="text-muted-foreground hover:text-primary">
+              <li className="flex items-start gap-2">
+                <Mail className="h-4 w-4 mt-0.5 text-primary shrink-0" />
+                <a href={`mailto:${site.email}`} className="text-muted-foreground hover:text-primary break-all">
                   {site.email}
                 </a>
               </li>

@@ -60,7 +60,7 @@ export function ServiceGrid() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (

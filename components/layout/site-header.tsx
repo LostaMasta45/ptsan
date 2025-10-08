@@ -24,25 +24,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
-          {/* Mobile Logo - colored with text */}
+          {/* Logo - colored version only */}
           <Image
             src="/media/logos/logo-san-colored.jpg"
             alt={site.short}
             width={120}
             height={40}
-            className="h-10 w-auto md:hidden"
+            className="h-10 w-auto"
           />
-          {/* Desktop Logo - simple icon */}
-          <Image
-            src="/media/logos/logoutama.png"
-            alt={site.short}
-            width={40}
-            height={40}
-            className="h-10 w-auto hidden md:block"
-          />
-          <span className="hidden font-bold sm:inline-block">
-            {site.short}
-          </span>
         </Link>
 
         <div className="hidden md:flex md:gap-6">

@@ -41,7 +41,7 @@ export default function TentangKami() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 mt-12">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2 mt-12">
             <div className="flex gap-4 p-6 rounded-lg bg-slate-50">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 <Building2 className="h-6 w-6 text-primary" />

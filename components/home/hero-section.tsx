@@ -23,7 +23,7 @@ export function HeroSection() {
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Area Mojokerto–Surabaya</span>
+              <span>Area Jawa Timur & Seluruh Indonesia</span>
             </div>
             <div className="flex items-center gap-2">
               <Shield className="h-4 w-4" />
@@ -35,7 +35,7 @@ export function HeroSection() {
 
       {/* Hero Content */}
       <div className="container px-4 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left: Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -45,7 +45,7 @@ export function HeroSection() {
           >
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-                Renovasi & Konstruksi Tanpa Drama, Hasil Kuat & Rapi
+                Renovasi & Kontruksi Tanpa Drama, <span className="text-accent">Hasil Berkualitas , Kuat & Terpercaya</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground">
                 Desain, gambar kerja (CAD), hingga eksekusi—tepat waktu, transparan, profesional.

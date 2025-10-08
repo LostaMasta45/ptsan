@@ -103,7 +103,7 @@ export default function KontakPage() {
 
             <div className="bg-card rounded-lg border overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126646.24455315494!2d112.36806494863278!3d-7.554726199999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e1ee4b8e6c1b%3A0x401e8f1fc28b4b0!2sMojokerto%2C%20Mojokerto%20City%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1234567890123!5m2!1sen!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.8847!2d112.4338!3d-7.4681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zN8KwMjgnMDUuMiJTIDExMsKwMjYnMDEuNyJF!5e0!3m2!1sen!2sid!4v1234567890!5m2!1sen!2sid&q=Jl.+Suromulang+Selatan+X+No.4,+Mergelo,+Surodinawan,+Kec.+Prajurit+Kulon,+Kota+Mojokerto,+Jawa+Timur+61328"
                 width="100%"
                 height="300"
                 style={{ border: 0 }}

@@ -20,7 +20,7 @@ export default function TestimoniPage() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3 text-center max-w-4xl mx-auto">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 text-center max-w-4xl mx-auto">
         <div className="p-6 space-y-2">
           <div className="text-4xl font-bold text-primary">{site.projectsDone}</div>
           <p className="text-muted-foreground">Proyek Selesai</p>
@@ -47,7 +47,7 @@ export default function TestimoniPage() {
           <h2 className="text-2xl font-bold">Kenapa Klien Memilih Kami?</h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
           {[
             {
               title: 'Komunikasi Transparan',

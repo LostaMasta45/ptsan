@@ -40,7 +40,7 @@ export function Partnership() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 items-center justify-items-center max-w-6xl mx-auto">
           {partners.map((partner, index) => (
             <motion.div
               key={partner.name}
@@ -58,7 +58,7 @@ export function Partnership() {
                   alt={partner.name}
                   width={120}
                   height={48}
-                  className="h-10 w-auto max-w-full object-contain opacity-80 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className="h-10 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             </motion.div>
