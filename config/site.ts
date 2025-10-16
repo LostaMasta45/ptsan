@@ -3,7 +3,7 @@ export const site = {
   short: 'PT SAN',
   tagline: 'Bangun Aman, Tepat Waktu, Hasil Berkualitas.',
   baseCity: 'Mojokerto',
-  serviceAreas: ['Mojokerto', 'Jombang', 'Sidoarjo', 'Surabaya'],
+  serviceAreas: ['Mojokerto', 'Jawa Timur', 'Dan Seluruh Indonesia'],
   whatsappLink: 'https://wa.me/6282210400051?text=Halo%20PT%20SAN,%20saya%20butuh%20konsultasi%20proyek',
   email: 'semangatanaknegeri.group@gmail.com',
   address: 'Jl. Suromulang Selatan X No.4, Mergelo, Surodinawan, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61328',

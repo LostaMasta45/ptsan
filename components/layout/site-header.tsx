@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, MessageCircle, ChevronDown } from 'lucide-react';
@@ -26,6 +26,30 @@ const navigation = [
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+    setPortfolioDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    const id = setTimeout(() => {
+      setPortfolioDropdownOpen(false);
+    }, 150);
+    setTimeoutId(id);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [timeoutId]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -49,20 +73,20 @@ export function SiteHeader() {
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => setPortfolioDropdownOpen(true)}
-                onMouseLeave={() => setPortfolioDropdownOpen(false)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
               >
-                <button className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary">
+                <button className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary py-2">
                   {item.name}
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${portfolioDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {portfolioDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-background border rounded-lg shadow-lg py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className="absolute top-full left-0 mt-0 w-48 bg-background border rounded-lg shadow-lg py-2 animate-in fade-in slide-in-from-top-1 duration-150">
                     {portfolioItems.map((subItem) => (
                       <Link
                         key={subItem.name}
                         href={subItem.href}
-                        className="block px-4 py-2 text-sm hover:bg-accent transition-colors"
+                        className="block px-4 py-2.5 text-sm hover:bg-accent transition-colors"
                       >
                         {subItem.name}
                       </Link>
