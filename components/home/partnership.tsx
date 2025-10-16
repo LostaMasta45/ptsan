@@ -12,6 +12,9 @@ const partnerNames = [
   "Interior Tonic.jpg",
   "Logo Putera Teknik.png",
   "Mortar Utama.png",
+  "PT. Integra Indocabinet.png",
+  "PT. JSR Jaya Indonesia.jpeg",
+  "PT. Sepatu Pratama Indonesia.png",
   "Renova.jpg",
   "Tata Bersama.png"
 ];
@@ -48,17 +51,17 @@ export function Partnership() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="group relative flex items-center justify-center w-full h-20"
+              className="group relative flex items-center justify-center w-full h-24"
               aria-label={`Partner: ${partner.name}`}
               title={partner.name}
             >
-              <div className="relative w-full h-full flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center px-2">
                 <Image
                   src={partner.logoSrc}
                   alt={partner.name}
-                  width={120}
-                  height={48}
-                  className="h-10 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
+                  width={140}
+                  height={56}
+                  className="h-14 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             </motion.div>
