@@ -5,23 +5,21 @@ import { motion } from 'framer-motion';
 import assetsManifest from '@/src/assets.manifest.json';
 
 const partnerNames = [
-  "Charter.png",
-  "INDOCASA-LOGO-BLACK-WITH-TAGLINE.png",
-  "Indocasa.jpeg",
-  "Inkase.jpg",
-  "Interior Tonic.jpg",
-  "Logo Putera Teknik.png",
-  "Mortar Utama.png",
+  "Interior Tonic.png",
+  "PT. Cipta Mortar Utama.png",
+  "PT. Indocasa Furniture.png",
+  "PT. Inkase.png",
   "PT. Integra Indocabinet.png",
-  "PT. JSR Jaya Indonesia.jpeg",
+  "PT. JSR Jaya Indonesia.png",
+  "PT. Putera Teknik Solusi.png",
   "PT. Sepatu Pratama Indonesia.png",
-  "Renova.jpg",
-  "Tata Bersama.png"
+  "PT. Tata Bersama.png",
+  "Renova.png"
 ];
 
 const partners = partnerNames.map(fileName => ({
   name: fileName.replace(/\.(png|jpg|jpeg)$/i, '').replace(/-/g, ' '),
-  logoSrc: `/media/logos/${fileName}`
+  logoSrc: `/media/logos/partners/${fileName}`
 }));
 
 export function Partnership() {
@@ -59,9 +57,9 @@ export function Partnership() {
                 <Image
                   src={partner.logoSrc}
                   alt={partner.name}
-                  width={140}
-                  height={56}
-                  className="h-14 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
+                  width={280}
+                  height={112}
+                  className="h-28 w-auto max-w-full object-contain opacity-90 group-hover:opacity-100 transition-all duration-300"
                 />
               </div>
             </motion.div>

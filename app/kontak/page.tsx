@@ -103,7 +103,7 @@ export default function KontakPage() {
 
             <div className="bg-card rounded-lg border overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3954.4908989614826!2d112.43166547501183!3d-7.468109292542853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e4fe82d9df1b%3A0x2856cd9f5a62ba24!2sPT.%20SEMANGAT%20ANAK%20NEGERI!5e0!3m2!1sen!2sid!4v1704891234567!5m2!1sen!2sid"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d294.0153853818094!2d112.41549789992071!3d-7.489114900071238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7813e388b91e65%3A0xca0f0ce4a7d54d05!2sJl.%20Suromulang%20Selatan%20X%20No.4!5e0!3m2!1sid!2sid!4v1761634561021!5m2!1sid!2sid"
                 width="100%"
                 height="300"
                 style={{ border: 0 }}
