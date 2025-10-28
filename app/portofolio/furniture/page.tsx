@@ -13,6 +13,7 @@ export default function FurniturePortfolioPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedItem, setSelectedItem] = useState<FurnitureItem | null>(null);
   const [viewMode, setViewMode] = useState<'render' | 'construction'>('render');
+  const [constructionIndex, setConstructionIndex] = useState<number>(0);
 
   const filteredItems = selectedCategory === 'all'
     ? furnitureItems
@@ -21,10 +22,12 @@ export default function FurniturePortfolioPage() {
   const openModal = (item: FurnitureItem) => {
     setSelectedItem(item);
     setViewMode('render');
+    setConstructionIndex(0);
   };
 
   const closeModal = () => {
     setSelectedItem(null);
+    setConstructionIndex(0);
   };
 
   const navigateItem = (direction: 'prev' | 'next') => {
@@ -40,6 +43,18 @@ export default function FurniturePortfolioPage() {
     
     setSelectedItem(filteredItems[newIndex]);
     setViewMode('render');
+    setConstructionIndex(0);
+  };
+
+  const navigateConstruction = (direction: 'prev' | 'next') => {
+    if (!selectedItem) return;
+    const maxIndex = selectedItem.constructionImages.length - 1;
+    
+    if (direction === 'prev') {
+      setConstructionIndex(prev => prev > 0 ? prev - 1 : maxIndex);
+    } else {
+      setConstructionIndex(prev => prev < maxIndex ? prev + 1 : 0);
+    }
   };
 
   return (
@@ -233,14 +248,20 @@ export default function FurniturePortfolioPage() {
                 {/* View Toggle */}
                 <div className="flex gap-2 justify-center">
                   <Button
-                    onClick={() => setViewMode('render')}
+                    onClick={() => {
+                      setViewMode('render');
+                      setConstructionIndex(0);
+                    }}
                     variant={viewMode === 'render' ? 'default' : 'outline'}
                     className="flex-1 max-w-xs"
                   >
                     Render 3D
                   </Button>
                   <Button
-                    onClick={() => setViewMode('construction')}
+                    onClick={() => {
+                      setViewMode('construction');
+                      setConstructionIndex(0);
+                    }}
                     variant={viewMode === 'construction' ? 'default' : 'outline'}
                     className="flex-1 max-w-xs"
                   >
@@ -250,18 +271,43 @@ export default function FurniturePortfolioPage() {
 
                 {/* Image Display */}
                 <motion.div
-                  key={viewMode}
+                  key={`${viewMode}-${constructionIndex}`}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}
                   className="relative aspect-video w-full rounded-xl overflow-hidden bg-muted"
                 >
                   <Image
-                    src={viewMode === 'render' ? selectedItem.renderImage : selectedItem.constructionImage}
-                    alt={`${selectedItem.name} - ${viewMode === 'render' ? 'Render' : 'Construction'}`}
+                    src={viewMode === 'render' ? selectedItem.renderImage : selectedItem.constructionImages[constructionIndex]}
+                    alt={`${selectedItem.name} - ${viewMode === 'render' ? 'Render' : `Construction ${constructionIndex + 1}`}`}
                     fill
                     className="object-contain"
                   />
+                  
+                  {/* Construction Navigation */}
+                  {viewMode === 'construction' && selectedItem.constructionImages.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => navigateConstruction('prev')}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-background transition-colors"
+                      >
+                        <ArrowLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => navigateConstruction('next')}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-background transition-colors"
+                      >
+                        <ArrowRight className="w-5 h-5" />
+                      </button>
+                      
+                      {/* Construction Indicator */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <p className="text-sm font-medium">
+                          {constructionIndex + 1} / {selectedItem.constructionImages.length}
+                        </p>
+                      </div>
+                    </>
+                  )}
                 </motion.div>
 
                 {/* Additional Info */}
