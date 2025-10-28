@@ -27,20 +27,23 @@ export function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/submit-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        toast.success(result.message);
-        reset();
-      } else {
-        toast.error(result.message || 'Terjadi kesalahan. Silakan coba lagi.');
-      }
+      // Format message untuk WhatsApp
+      const message = `*Pesan dari Website PT SAN*\n\n` +
+        `*Nama:* ${data.name}\n` +
+        `*WhatsApp:* ${data.phone}\n` +
+        `*Email:* ${data.email || '-'}\n\n` +
+        `*Pesan:*\n${data.message}`;
+      
+      // Encode message untuk URL
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/6282210400051?text=${encodedMessage}`;
+      
+      // Redirect ke WhatsApp
+      window.open(whatsappURL, '_blank');
+      
+      // Reset form dan tampilkan success message
+      toast.success('Mengarahkan ke WhatsApp...');
+      reset();
     } catch (error) {
       toast.error('Terjadi kesalahan. Silakan coba lagi.');
     } finally {

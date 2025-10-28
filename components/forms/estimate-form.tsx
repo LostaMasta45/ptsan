@@ -52,20 +52,30 @@ export function EstimateForm() {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/submit-lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        toast.success(result.message);
-        reset();
-      } else {
-        toast.error(result.message || 'Terjadi kesalahan. Silakan coba lagi.');
-      }
+      // Cari label untuk service dan budget
+      const serviceLabel = services.find(s => s.value === data.service)?.label || data.service;
+      const budgetLabel = budgetRanges.find(b => b.value === data.budget)?.label || data.budget;
+      
+      // Format message untuk WhatsApp
+      const message = `*Permintaan Estimasi dari Website PT SAN*\n\n` +
+        `*Nama:* ${data.name}\n` +
+        `*WhatsApp:* ${data.phone}\n` +
+        `*Email:* ${data.email || '-'}\n` +
+        `*Lokasi Proyek:* ${data.location}\n` +
+        `*Jenis Layanan:* ${serviceLabel}\n` +
+        `*Estimasi Budget:* ${budgetLabel}\n\n` +
+        `*Deskripsi Proyek:*\n${data.description}`;
+      
+      // Encode message untuk URL
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/6282210400051?text=${encodedMessage}`;
+      
+      // Redirect ke WhatsApp
+      window.open(whatsappURL, '_blank');
+      
+      // Reset form dan tampilkan success message
+      toast.success('Mengarahkan ke WhatsApp...');
+      reset();
     } catch (error) {
       toast.error('Terjadi kesalahan. Silakan coba lagi.');
     } finally {
