@@ -12,8 +12,7 @@ import { site } from '@/config/site';
 export default function FurniturePortfolioPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedItem, setSelectedItem] = useState<FurnitureItem | null>(null);
-  const [viewMode, setViewMode] = useState<'render' | 'construction'>('render');
-  const [constructionIndex, setConstructionIndex] = useState<number>(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
 
   const filteredItems = selectedCategory === 'all'
     ? furnitureItems
@@ -21,13 +20,12 @@ export default function FurniturePortfolioPage() {
 
   const openModal = (item: FurnitureItem) => {
     setSelectedItem(item);
-    setViewMode('render');
-    setConstructionIndex(0);
+    setCurrentSlide(0);
   };
 
   const closeModal = () => {
     setSelectedItem(null);
-    setConstructionIndex(0);
+    setCurrentSlide(0);
   };
 
   const navigateItem = (direction: 'prev' | 'next') => {
@@ -42,19 +40,24 @@ export default function FurniturePortfolioPage() {
     }
     
     setSelectedItem(filteredItems[newIndex]);
-    setViewMode('render');
-    setConstructionIndex(0);
+    setCurrentSlide(0);
   };
 
-  const navigateConstruction = (direction: 'prev' | 'next') => {
+  const navigateSlide = (direction: 'prev' | 'next') => {
     if (!selectedItem) return;
-    const maxIndex = selectedItem.constructionImages.length - 1;
+    const totalSlides = 1 + selectedItem.constructionImages.length;
     
     if (direction === 'prev') {
-      setConstructionIndex(prev => prev > 0 ? prev - 1 : maxIndex);
+      setCurrentSlide(prev => prev > 0 ? prev - 1 : totalSlides - 1);
     } else {
-      setConstructionIndex(prev => prev < maxIndex ? prev + 1 : 0);
+      setCurrentSlide(prev => prev < totalSlides - 1 ? prev + 1 : 0);
     }
+  };
+
+  const getCurrentImage = () => {
+    if (!selectedItem) return '';
+    if (currentSlide === 0) return selectedItem.renderImage;
+    return selectedItem.constructionImages[currentSlide - 1];
   };
 
   return (
@@ -71,7 +74,7 @@ export default function FurniturePortfolioPage() {
             Portfolio Furniture
           </h1>
           <p className="text-lg text-muted-foreground">
-            Koleksi desain furniture custom dengan render 3D dan detail konstruksi.
+            22+ koleksi desain furniture custom dengan 2 slide per item - menampilkan desain dan detail konstruksi.
             Kualitas ekspor dengan craftsmanship tinggi dari {site.brand}.
           </p>
         </motion.div>
@@ -245,65 +248,57 @@ export default function FurniturePortfolioPage() {
                   )}
                 </div>
 
-                {/* View Toggle */}
-                <div className="flex gap-2 justify-center">
-                  <Button
-                    onClick={() => {
-                      setViewMode('render');
-                      setConstructionIndex(0);
-                    }}
-                    variant={viewMode === 'render' ? 'default' : 'outline'}
-                    className="flex-1 max-w-xs"
-                  >
-                    Render 3D
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setViewMode('construction');
-                      setConstructionIndex(0);
-                    }}
-                    variant={viewMode === 'construction' ? 'default' : 'outline'}
-                    className="flex-1 max-w-xs"
-                  >
-                    Detail Konstruksi
-                  </Button>
+                {/* Slide Indicator */}
+                <div className="flex gap-2 justify-center items-center">
+                  {[selectedItem.renderImage, ...selectedItem.constructionImages].map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentSlide(index)}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        currentSlide === index 
+                          ? 'w-8 bg-primary' 
+                          : 'w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
                 </div>
 
-                {/* Image Display */}
+                {/* Image Display with Slide Navigation */}
                 <motion.div
-                  key={`${viewMode}-${constructionIndex}`}
+                  key={currentSlide}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}
                   className="relative aspect-video w-full rounded-xl overflow-hidden bg-muted"
                 >
                   <Image
-                    src={viewMode === 'render' ? selectedItem.renderImage : selectedItem.constructionImages[constructionIndex]}
-                    alt={`${selectedItem.name} - ${viewMode === 'render' ? 'Render' : `Construction ${constructionIndex + 1}`}`}
+                    src={getCurrentImage()}
+                    alt={`${selectedItem.name} - Slide ${currentSlide + 1}`}
                     fill
                     className="object-contain"
                   />
                   
-                  {/* Construction Navigation */}
-                  {viewMode === 'construction' && selectedItem.constructionImages.length > 1 && (
+                  {/* Slide Navigation Arrows */}
+                  {[selectedItem.renderImage, ...selectedItem.constructionImages].length > 1 && (
                     <>
                       <button
-                        onClick={() => navigateConstruction('prev')}
+                        onClick={() => navigateSlide('prev')}
                         className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-background transition-colors"
                       >
                         <ArrowLeft className="w-5 h-5" />
                       </button>
                       <button
-                        onClick={() => navigateConstruction('next')}
+                        onClick={() => navigateSlide('next')}
                         className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm p-2 rounded-full hover:bg-background transition-colors"
                       >
                         <ArrowRight className="w-5 h-5" />
                       </button>
                       
-                      {/* Construction Indicator */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full">
+                      {/* Slide Counter */}
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
                         <p className="text-sm font-medium">
-                          {constructionIndex + 1} / {selectedItem.constructionImages.length}
+                          Slide {currentSlide + 1} / {1 + selectedItem.constructionImages.length}
                         </p>
                       </div>
                     </>

@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { FloatingCTA } from "@/components/floating-cta";
+import { ImageProtection } from "@/components/image-protection";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/seo/json-ld";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         <OrganizationSchema />
       </head>
       <body className={inter.className}>
+        <ImageProtection />
         <SiteHeader />
         <main className="min-h-screen">{children}</main>
         <SiteFooter />

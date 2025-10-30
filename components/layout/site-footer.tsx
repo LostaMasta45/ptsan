@@ -65,7 +65,14 @@ export function SiteFooter() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
-                <span className="text-muted-foreground">WhatsApp</span>
+                <a 
+                  href={site.whatsappLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  WhatsApp
+                </a>
               </li>
             </ul>
           </div>
