@@ -1,14 +1,13 @@
+'use client';
+
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { site } from '@/config/site';
 import { Building2, Users, Award, Target } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Tentang Kami',
-  description: site.description,
-};
+import { useLanguage } from '@/lib/i18n/context';
 
 export default function TentangKami() {
+  const { t, language } = useLanguage();
 
   return (
     <div className="py-20">
@@ -23,21 +22,21 @@ export default function TentangKami() {
               className="h-20 w-auto mx-auto mb-6"
               priority
             />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{site.brand}</h1>
-            <p className="text-xl text-muted-foreground">{site.tagline}</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.site.brand}</h1>
+            <p className="text-xl text-muted-foreground">{t.site.tagline}</p>
           </div>
 
           <div className="prose prose-slate max-w-none space-y-6">
             <p className="text-lg">
-              <strong>PT Semangat Anak Negeri (PT SAN)</strong> adalah penyedia jasa <strong>renovasi bangunan, konstruksi, dan layanan gambar teknik (drafter)</strong>. Kami memberi solusi menyeluruh dari <strong>perencanaan desain</strong>, <strong>pembuatan gambar kerja profesional (CAD)</strong>, hingga <strong>pelaksanaan proyek</strong> dengan hasil <strong>rapi, kuat, dan sesuai kebutuhan</strong>.
+              {t.about.intro}
             </p>
 
             <p>
-              Berawal dari pengalaman di desain teknik & drafting furniture untuk pasar lokal maupun internasional, kami berkembang ke konstruksi & renovasi demi menghadirkan layanan yang <strong>terpercaya, transparan, dan profesional</strong>. Dengan tim berpengalaman, peralatan lengkap, serta penguasaan software CAD, kami membantu mewujudkan hunian & bangunan yang fungsional, estetis, dan bernilai tinggi.
+              {t.about.origin}
             </p>
 
             <p>
-              Fokus kami: <strong>tepat waktu</strong>, <strong>sesuai anggaran</strong>, dan <strong>kepuasan klien</strong> untuk rumah tinggal, ruko/komersial, dan proyek desain teknik.
+              {t.about.focus}
             </p>
           </div>
 
@@ -47,9 +46,9 @@ export default function TentangKami() {
                 <Building2 className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Layanan Menyeluruh</h3>
+                <h3 className="font-semibold mb-2">{t.about.features.comprehensive.title}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Dari desain CAD, gambar kerja, hingga pelaksanaan konstruksi dalam satu atap.
+                  {t.about.features.comprehensive.desc}
                 </p>
               </div>
             </div>
@@ -59,9 +58,9 @@ export default function TentangKami() {
                 <Users className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Tim Berpengalaman</h3>
+                <h3 className="font-semibold mb-2">{t.about.features.experienced.title}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Drafter CAD, arsitek, dan tukang yang teruji di berbagai proyek lokal & internasional.
+                  {t.about.features.experienced.desc}
                 </p>
               </div>
             </div>
@@ -71,9 +70,9 @@ export default function TentangKami() {
                 <Award className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Kualitas Terjamin</h3>
+                <h3 className="font-semibold mb-2">{t.about.features.quality.title}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Material berkualitas dan garansi hingga 12 bulan untuk kepuasan Anda.
+                  {t.about.features.quality.desc}
                 </p>
               </div>
             </div>
@@ -83,21 +82,21 @@ export default function TentangKami() {
                 <Target className="h-6 w-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Komitmen Transparan</h3>
+                <h3 className="font-semibold mb-2">{t.about.features.transparent.title}</h3>
                 <p className="text-sm text-muted-foreground">
-                  RAB detail, timeline jelas, dan update progres berkala untuk kepercayaan penuh.
+                  {t.about.features.transparent.desc}
                 </p>
               </div>
             </div>
           </div>
 
           <div className="mt-12 p-8 rounded-lg bg-primary/5 border border-primary/10">
-            <h2 className="text-2xl font-bold mb-4">Area Layanan</h2>
+            <h2 className="text-2xl font-bold mb-4">{t.about.serviceAreaTitle}</h2>
             <p className="mb-4">
-              Kami melayani proyek di <strong>{site.serviceAreas.join(', ')}</strong> dan sekitarnya.
+              {language === 'id' ? 'Kami melayani proyek di' : 'We serve projects in'} <strong>{site.serviceAreas.join(', ')}</strong> {language === 'id' ? 'dan sekitarnya' : 'and surrounding areas'}.
             </p>
             <p className="text-sm text-muted-foreground">
-              Kantor pusat kami berlokasi di <strong>{site.baseCity}</strong>, memudahkan koordinasi dan respons cepat untuk proyek Anda.
+              {t.about.serviceAreaDesc}
             </p>
           </div>
         </div>

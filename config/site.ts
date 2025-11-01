@@ -6,6 +6,7 @@ export const site = {
   serviceAreas: ['Mojokerto', 'Jawa Timur', 'Dan Seluruh Indonesia'],
   whatsappLink: 'https://wa.me/6282210400051?text=Halo%20PT%20SAN,%20saya%20butuh%20konsultasi%20proyek',
   email: 'semangatanaknegeri.group@gmail.com',
+  fiverrLink: 'https://www.fiverr.com/apixpols/',
   address: 'Jl. Suromulang Selatan X No.4, Mergelo, Surodinawan, Kec. Prajurit Kulon, Kota Mojokerto, Jawa Timur 61328',
   experienceYears: '10+',
   projectsDone: '300+',

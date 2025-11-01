@@ -190,7 +190,7 @@ export function BeforeAfterSlider({
               >
                 <MoveHorizontal className="h-8 w-8 text-primary animate-pulse" />
                 <span className="text-sm font-semibold text-gray-800 whitespace-nowrap">
-                  ✨ Geser untuk lihat hasil
+                  {t.portfolioPage.swipeToSee}
                 </span>
               </motion.button>
             </motion.div>

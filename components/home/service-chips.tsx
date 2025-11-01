@@ -2,16 +2,18 @@
 
 import { Hammer, Building2, Paintbrush, Ruler, Wrench } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const services = [
-  { id: 'renovasi', label: 'Renovasi', icon: Hammer },
-  { id: 'konstruksi', label: 'Konstruksi', icon: Building2 },
-  { id: 'interior', label: 'Interior', icon: Paintbrush },
-  { id: 'drafter', label: 'Drafter', icon: Ruler },
-  { id: 'maintenance', label: 'Maintenance', icon: Wrench },
-];
+import { useLanguage } from '@/lib/i18n/context';
 
 export function ServiceChips() {
+  const { t } = useLanguage();
+  
+  const services = [
+    { id: 'renovasi', label: t.serviceChips.renovation, icon: Hammer },
+    { id: 'konstruksi', label: t.serviceChips.construction, icon: Building2 },
+    { id: 'interior', label: t.serviceChips.interior, icon: Paintbrush },
+    { id: 'drafter', label: t.serviceChips.drafter, icon: Ruler },
+    { id: 'maintenance', label: t.serviceChips.maintenance, icon: Wrench },
+  ];
   const scrollToServices = () => {
     const element = document.getElementById('layanan');
     if (element) {

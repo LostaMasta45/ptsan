@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Award, TrendingUp } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useLanguage } from '@/lib/i18n/context';
 
 function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -40,12 +41,7 @@ function CountUp({ end, suffix = '' }: { end: number; suffix?: string }) {
 }
 
 export function TrustBar() {
-  const placeholderLogos = [
-    { name: 'Partner 1', width: 100 },
-    { name: 'Partner 2', width: 100 },
-    { name: 'Partner 3', width: 100 },
-    { name: 'Partner 4', width: 100 },
-  ];
+  const { t } = useLanguage();
 
   return (
     <section className="py-12 bg-white">
@@ -59,7 +55,7 @@ export function TrustBar() {
             className="text-center"
           >
             <CountUp end={10} suffix="+" />
-            <div className="text-sm text-muted-foreground mt-2">Tahun Pengalaman</div>
+            <div className="text-sm text-muted-foreground mt-2">{t.trustBar.experience}</div>
           </motion.div>
 
           <motion.div
@@ -70,7 +66,7 @@ export function TrustBar() {
             className="text-center"
           >
             <CountUp end={300} suffix="+" />
-            <div className="text-sm text-muted-foreground mt-2">Proyek Selesai</div>
+            <div className="text-sm text-muted-foreground mt-2">{t.trustBar.projects}</div>
           </motion.div>
 
           <motion.div
@@ -80,8 +76,8 @@ export function TrustBar() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-center"
           >
-            <div className="font-bold text-3xl md:text-4xl">Garansi</div>
-            <div className="text-sm text-muted-foreground mt-2">12 Bulan</div>
+            <div className="font-bold text-3xl md:text-4xl">{t.trustBar.warranty.split(' ')[0]}</div>
+            <div className="text-sm text-muted-foreground mt-2">{t.trustBar.warranty.split(' ').slice(1).join(' ')}</div>
           </motion.div>
         </div>
       </div>

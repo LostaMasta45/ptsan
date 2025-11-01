@@ -10,8 +10,10 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n/context';
 
 export function ContactForm() {
+  const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const {
@@ -42,10 +44,10 @@ export function ContactForm() {
       window.open(whatsappURL, '_blank');
       
       // Reset form dan tampilkan success message
-      toast.success('Mengarahkan ke WhatsApp...');
+      toast.success(t.contactForm.success);
       reset();
     } catch (error) {
-      toast.error('Terjadi kesalahan. Silakan coba lagi.');
+      toast.error(t.contactForm.error);
     } finally {
       setIsSubmitting(false);
     }
@@ -54,10 +56,10 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="space-y-2">
-        <Label htmlFor="name">Nama Lengkap *</Label>
+        <Label htmlFor="name">{t.contactForm.name} *</Label>
         <Input
           id="name"
-          placeholder="Nama Anda"
+          placeholder={t.contactForm.namePlaceholder}
           {...register('name')}
           aria-invalid={!!errors.name}
         />
@@ -67,11 +69,11 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="phone">Nomor WhatsApp *</Label>
+        <Label htmlFor="phone">{t.contactForm.phone} *</Label>
         <Input
           id="phone"
           type="tel"
-          placeholder="08xxxxxxxxxx"
+          placeholder={t.contactForm.phonePlaceholder}
           {...register('phone')}
           aria-invalid={!!errors.phone}
         />
@@ -81,11 +83,11 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email">Email (Opsional)</Label>
+        <Label htmlFor="email">{t.contactForm.email}</Label>
         <Input
           id="email"
           type="email"
-          placeholder="email@example.com"
+          placeholder={t.contactForm.emailPlaceholder}
           {...register('email')}
           aria-invalid={!!errors.email}
         />
@@ -95,10 +97,10 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="message">Pesan *</Label>
+        <Label htmlFor="message">{t.contactForm.message} *</Label>
         <Textarea
           id="message"
-          placeholder="Ceritakan kebutuhan proyek Anda..."
+          placeholder={t.contactForm.messagePlaceholder}
           rows={5}
           {...register('message')}
           aria-invalid={!!errors.message}
@@ -117,10 +119,10 @@ export function ContactForm() {
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Mengirim...
+            {t.contactForm.sending}
           </>
         ) : (
-          'Kirim Pesan'
+          t.contactForm.submit
         )}
       </Button>
     </form>

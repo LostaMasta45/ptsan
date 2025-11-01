@@ -144,19 +144,19 @@ export const constructionProjects: ConstructionProject[] = [
 ];
 
 export const constructionCategories = [
-  { value: 'all', label: 'Semua Proyek', icon: '🏗️' },
-  { value: 'residential', label: 'Rumah Tinggal', icon: '🏠' },
-  { value: 'commercial', label: 'Komersial', icon: '🏢' },
-  { value: 'religious', label: 'Tempat Ibadah', icon: '⛪' },
-  { value: 'villa', label: 'Villa & Resort', icon: '🏖️' },
-  { value: 'interior', label: 'Interior', icon: '🛋️' },
-  { value: 'security', label: 'Security Post', icon: '🛡️' },
+  { value: 'all', labelId: 'Semua Proyek', labelEn: 'All Projects', icon: '🏗️' },
+  { value: 'residential', labelId: 'Rumah Tinggal', labelEn: 'Residential', icon: '🏠' },
+  { value: 'commercial', labelId: 'Komersial', labelEn: 'Commercial', icon: '🏢' },
+  { value: 'religious', labelId: 'Tempat Ibadah', labelEn: 'Religious', icon: '⛪' },
+  { value: 'villa', labelId: 'Villa & Resort', labelEn: 'Villa & Resort', icon: '🏖️' },
+  { value: 'interior', labelId: 'Interior', labelEn: 'Interior', icon: '🛋️' },
+  { value: 'security', labelId: 'Security Post', labelEn: 'Security Post', icon: '🛡️' },
 ] as const;
 
 export const constructionTypes = [
-  { value: 'all', label: 'Semua Tipe' },
-  { value: 'render', label: 'Render 3D' },
-  { value: 'technical', label: 'Gambar Kerja' },
-  { value: 'photo', label: 'Foto Implementasi' },
-  { value: 'mixed', label: 'Render + Foto' },
+  { value: 'all', labelId: 'Semua Tipe', labelEn: 'All Types' },
+  { value: 'render', labelId: 'Render 3D', labelEn: '3D Render' },
+  { value: 'technical', labelId: 'Gambar Kerja', labelEn: 'Technical Drawings' },
+  { value: 'photo', labelId: 'Foto Implementasi', labelEn: 'Implementation Photos' },
+  { value: 'mixed', labelId: 'Render + Foto', labelEn: 'Render + Photos' },
 ] as const;

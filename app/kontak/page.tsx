@@ -1,37 +1,34 @@
-import { Metadata } from 'next';
+'use client';
+
 import { site } from '@/config/site';
 import { ContactForm } from '@/components/forms/contact-form';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
-
-export const metadata: Metadata = {
-  title: 'Hubungi Kami',
-  description: `Hubungi ${site.brand} untuk konsultasi proyek renovasi, konstruksi, dan jasa drafter. Kantor di ${site.baseCity}, melayani ${site.serviceAreas.join(', ')}.`,
-  keywords: `kontak ${site.brand}, alamat kantor Mojokerto, nomor telepon kontraktor, konsultasi renovasi`,
-};
+import { MapPin, Phone, Mail, Clock, Briefcase } from 'lucide-react';
+import { useLanguage } from '@/lib/i18n/context';
 
 export default function KontakPage() {
+  const { t } = useLanguage();
+
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-6xl mx-auto space-y-12">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">Hubungi Kami</h1>
+          <h1 className="text-4xl font-bold tracking-tight">{t.contactPage.title}</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Punya pertanyaan atau ingin memulai proyek? Kami siap membantu Anda.
-            Hubungi kami melalui form atau kontak langsung di bawah.
+            {t.contactPage.subtitle}
           </p>
         </div>
 
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="space-y-8">
             <div className="bg-card rounded-lg border p-6">
-              <h2 className="text-xl font-semibold mb-6">Kirim Pesan</h2>
+              <h2 className="text-xl font-semibold mb-6">{t.contactPage.sendMessage}</h2>
               <ContactForm />
             </div>
           </div>
 
           <div className="space-y-6">
             <div className="bg-card rounded-lg border p-6 space-y-6">
-              <h2 className="text-xl font-semibold">Informasi Kontak</h2>
+              <h2 className="text-xl font-semibold">{t.contactPage.contactInfo}</h2>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
@@ -39,12 +36,12 @@ export default function KontakPage() {
                     <MapPin className="h-5 w-5 text-primary" />
                   </div>
                   <div className="space-y-1">
-                    <p className="font-semibold">Alamat Kantor</p>
+                    <p className="font-semibold">{t.contactPage.officeAddress}</p>
                     <p className="text-sm text-muted-foreground">
                       {site.address}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      Melayani: {site.serviceAreas.join(', ')} dan sekitarnya
+                      {t.contactPage.servingAreas}: {site.serviceAreas.join(', ')} {t.contactPage.andSurrounding}
                     </p>
                   </div>
                 </div>
@@ -54,14 +51,14 @@ export default function KontakPage() {
                     <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div className="space-y-1">
-                    <p className="font-semibold">WhatsApp</p>
+                    <p className="font-semibold">{t.contactPage.whatsapp}</p>
                     <a
                       href={site.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-primary hover:underline"
                     >
-                      Klik untuk chat via WhatsApp
+                      {t.contactPage.clickToChat}
                     </a>
                   </div>
                 </div>
@@ -71,7 +68,7 @@ export default function KontakPage() {
                     <Mail className="h-5 w-5 text-primary" />
                   </div>
                   <div className="space-y-1">
-                    <p className="font-semibold">Email</p>
+                    <p className="font-semibold">{t.contactPage.email}</p>
                     <a
                       href={`mailto:${site.email}`}
                       className="text-sm text-primary hover:underline"
@@ -82,19 +79,36 @@ export default function KontakPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
+                  <div className="p-2 rounded-lg bg-green-600/10 flex-shrink-0">
+                    <Briefcase className="h-5 w-5 text-green-600" />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="font-semibold">{t.contactPage.fiverr}</p>
+                    <a
+                      href={site.fiverrLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-green-600 hover:underline inline-flex items-center gap-1"
+                    >
+                      {t.contactPage.clickToOrderFiverr}
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
                   <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
                     <Clock className="h-5 w-5 text-primary" />
                   </div>
                   <div className="space-y-1">
-                    <p className="font-semibold">Jam Operasional</p>
+                    <p className="font-semibold">{t.contactPage.operatingHours}</p>
                     <p className="text-sm text-muted-foreground">
-                      Senin - Jumat: 08:00 - 17:00 WIB
+                      {t.contactPage.monday}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      Sabtu: 08:00 - 14:00 WIB
+                      {t.contactPage.saturday}
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      Minggu & Libur: Closed
+                      {t.contactPage.sunday}
                     </p>
                   </div>
                 </div>
@@ -117,10 +131,9 @@ export default function KontakPage() {
         </div>
 
         <div className="bg-primary/5 rounded-lg p-8 text-center space-y-4">
-          <h2 className="text-2xl font-bold">Butuh Respon Lebih Cepat?</h2>
+          <h2 className="text-2xl font-bold">{t.contactPage.fasterResponse}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Chat langsung via WhatsApp untuk konsultasi instan dan jadwalkan
-            survey lokasi gratis.
+            {t.contactPage.fasterResponseDesc}
           </p>
           <a
             href={site.whatsappLink}
@@ -128,7 +141,7 @@ export default function KontakPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-md bg-green-600 text-white px-6 py-3 text-sm font-medium hover:bg-green-700 transition-colors"
           >
-            Chat WhatsApp Sekarang
+            {t.contactPage.chatWhatsappNow}
           </a>
         </div>
       </div>

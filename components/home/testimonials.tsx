@@ -10,53 +10,27 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Budi Santoso',
-    location: 'Mojokerto',
-    text: 'Renovasi rumah selesai tepat waktu, hasilnya melebihi ekspektasi!',
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: 'Ani Wijaya',
-    location: 'Sidoarjo',
-    text: 'Tim profesional, harga transparan, komunikasi lancar sepanjang proyek.',
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: 'Dedi Kurniawan',
-    location: 'Surabaya',
-    text: 'Gambar CAD-nya detail, membantu kami dapat izin dengan mudah.',
-    rating: 5,
-  },
-  {
-    id: 4,
-    name: 'Siti Rahayu',
-    location: 'Jombang',
-    text: 'Interior rumah jadi cantik dan nyaman, sesuai budget kami.',
-    rating: 5,
-  },
-  {
-    id: 5,
-    name: 'Ahmad Fauzi',
-    location: 'Mojokerto',
-    text: 'Perbaikan atap bocor cepat dan rapi, garansinya juga jelas.',
-    rating: 5,
-  },
-];
+import { useLanguage } from '@/lib/i18n/context';
 
 export function Testimonials() {
+  const { t } = useLanguage();
+  
+  const testimonials = t.testimonials.items.map((item, index) => ({
+    id: index + 1,
+    name: item.name,
+    location: item.location,
+    text: item.comment,
+    project: item.project,
+    rating: 5,
+  }));
+  
   return (
     <section className="py-20 bg-slate-50">
       <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Testimoni Klien</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.testimonials.title}</h2>
           <p className="text-muted-foreground">
-            Kepercayaan dan kepuasan klien adalah prioritas kami
+            {t.testimonials.subtitle}
           </p>
         </div>
 

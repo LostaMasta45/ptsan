@@ -1,12 +1,8 @@
-import { Metadata } from 'next';
+'use client';
+
 import { site } from '@/config/site';
 import { BeforeAfterSlider } from '@/components/portfolio/before-after-slider';
-
-export const metadata: Metadata = {
-  title: 'Portofolio Before & After',
-  description: `Lihat transformasi nyata dari berbagai proyek renovasi dan konstruksi yang telah dikerjakan ${site.brand} di ${site.serviceAreas.join(', ')}. Bukti kualitas dan kepercayaan klien kami.`,
-  keywords: `portofolio ${site.brand}, before after renovasi, proyek renovasi Mojokerto, hasil konstruksi, transformasi rumah`,
-};
+import { useLanguage } from '@/lib/i18n/context';
 
 const beforeAfterPairs = Array.from({ length: 20 }, (_, i) => {
   const num = i + 1;
@@ -18,13 +14,14 @@ const beforeAfterPairs = Array.from({ length: 20 }, (_, i) => {
 });
 
 export default function PortofolioPage() {
+  const { t, language } = useLanguage();
+
   return (
     <div className="container mx-auto px-4 py-12 space-y-16">
       <div className="text-center space-y-4 max-w-2xl mx-auto">
-        <h1 className="text-4xl font-bold tracking-tight">Portofolio Before & After</h1>
+        <h1 className="text-4xl font-bold tracking-tight">{t.portfolioPage.title}</h1>
         <p className="text-lg text-muted-foreground">
-          Lihat transformasi nyata dari setiap proyek yang kami kerjakan.
-          Geser untuk melihat perubahan sebelum dan sesudah renovasi di {site.serviceAreas.join(', ')} dan sekitarnya.
+          {t.portfolioPage.subtitle} {language === 'id' ? 'di' : 'in'} {site.serviceAreas.join(', ')} {language === 'id' ? 'dan sekitarnya' : 'and surrounding areas'}.
         </p>
       </div>
 
@@ -34,16 +31,15 @@ export default function PortofolioPage() {
             key={pair.id}
             beforeImage={pair.before}
             afterImage={pair.after}
-            title={`Proyek ${pair.id}`}
+            title={`${t.portfolio.project} ${pair.id}`}
           />
         ))}
       </div>
 
       <section className="bg-muted/50 rounded-lg p-8 text-center space-y-6">
-        <h2 className="text-2xl font-bold">Siap Memulai Proyek Anda?</h2>
+        <h2 className="text-2xl font-bold">{t.portfolioPage.ctaTitle}</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Konsultasikan kebutuhan proyek Anda dengan tim kami. Gratis, tanpa
-          komitmen.
+          {t.portfolioPage.ctaSubtitle}
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <a
@@ -52,13 +48,13 @@ export default function PortofolioPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center rounded-md bg-primary text-primary-foreground px-6 py-3 text-sm font-medium hover:bg-primary/90 transition-colors"
           >
-            Chat WhatsApp
+            {t.portfolioPage.ctaWhatsapp}
           </a>
           <a
             href="/estimasi"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium hover:bg-accent hover:text-accent-foreground transition-colors"
           >
-            Minta Estimasi
+            {t.portfolioPage.ctaEstimate}
           </a>
         </div>
       </section>

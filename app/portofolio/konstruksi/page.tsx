@@ -7,8 +7,10 @@ import { X, ChevronLeft, ChevronRight, Building2, Eye, Star } from 'lucide-react
 import { constructionProjects, constructionCategories, constructionTypes, ConstructionProject } from '@/data/construction-portfolio';
 import { Button } from '@/components/ui/button';
 import { site } from '@/config/site';
+import { useLanguage } from '@/lib/i18n/context';
 
 export default function KonstruksiPortfolioPage() {
+  const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<string>('all');
   const [selectedProject, setSelectedProject] = useState<ConstructionProject | null>(null);
@@ -86,10 +88,10 @@ export default function KonstruksiPortfolioPage() {
             </div>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Portfolio <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Konstruksi</span>
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">{t.constructionPortfolio.title}</span>
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Koleksi proyek konstruksi, renovasi, dan desain arsitektur dengan render 3D profesional dan hasil implementasi nyata.
+            {t.constructionPortfolio.subtitle}
           </p>
         </motion.div>
 
@@ -102,19 +104,19 @@ export default function KonstruksiPortfolioPage() {
         >
           <div className="bg-card border rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-primary">{constructionProjects.length}</div>
-            <div className="text-sm text-muted-foreground mt-1">Proyek</div>
+            <div className="text-sm text-muted-foreground mt-1">{t.constructionPortfolio.projects}</div>
           </div>
           <div className="bg-card border rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-primary">{constructionProjects.reduce((acc, p) => acc + p.images.length, 0)}</div>
-            <div className="text-sm text-muted-foreground mt-1">Gambar</div>
+            <div className="text-sm text-muted-foreground mt-1">{language === 'id' ? 'Gambar' : 'Images'}</div>
           </div>
           <div className="bg-card border rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-primary">{constructionProjects.filter(p => p.type === 'render' || p.type === 'mixed').length}</div>
-            <div className="text-sm text-muted-foreground mt-1">3D Renders</div>
+            <div className="text-sm text-muted-foreground mt-1">{t.constructionPortfolio.renderLabel}</div>
           </div>
           <div className="bg-card border rounded-xl p-6 text-center">
             <div className="text-3xl font-bold text-primary">{constructionProjects.filter(p => p.type === 'photo' || p.type === 'mixed').length}</div>
-            <div className="text-sm text-muted-foreground mt-1">Foto Real</div>
+            <div className="text-sm text-muted-foreground mt-1">{t.constructionPortfolio.photoLabel}</div>
           </div>
         </motion.div>
 
@@ -129,7 +131,7 @@ export default function KonstruksiPortfolioPage() {
           >
             <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-yellow-500 text-black px-4 py-2 rounded-full font-semibold text-sm">
               <Star className="w-4 h-4 fill-current" />
-              Featured Project
+              {t.constructionPortfolio.featuredProject}
             </div>
             <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-muted">
               <Image
@@ -142,7 +144,7 @@ export default function KonstruksiPortfolioPage() {
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">
-                    {constructionCategories.find(c => c.value === featuredProject.category)?.label}
+                    {language === 'id' ? constructionCategories.find(c => c.value === featuredProject.category)?.labelId : constructionCategories.find(c => c.value === featuredProject.category)?.labelEn}
                   </span>
                   <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs">
                     {getTypeLabel(featuredProject.type)}
@@ -177,7 +179,7 @@ export default function KonstruksiPortfolioPage() {
                 className="transition-all duration-300"
               >
                 <span className="mr-2">{category.icon}</span>
-                {category.label}
+                {language === 'id' ? category.labelId : category.labelEn}
               </Button>
             ))}
           </div>
@@ -189,7 +191,7 @@ export default function KonstruksiPortfolioPage() {
                 variant={selectedType === type.value ? 'default' : 'outline'}
                 size="sm"
               >
-                {type.label}
+                {language === 'id' ? type.labelId : type.labelEn}
               </Button>
             ))}
           </div>
@@ -233,7 +235,7 @@ export default function KonstruksiPortfolioPage() {
                     <span className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full">
                       {constructionCategories.find(c => c.value === project.category)?.icon}
                       {' '}
-                      {constructionCategories.find(c => c.value === project.category)?.label}
+                      {language === 'id' ? constructionCategories.find(c => c.value === project.category)?.labelId : constructionCategories.find(c => c.value === project.category)?.labelEn}
                     </span>
                     <span className="text-xs px-2 py-1 bg-muted rounded-full">
                       {getTypeLabel(project.type)}
@@ -260,7 +262,7 @@ export default function KonstruksiPortfolioPage() {
           >
             <Building2 className="w-16 h-16 mx-auto text-muted-foreground" />
             <p className="text-xl text-muted-foreground">
-              Tidak ada proyek di kategori ini
+              {t.constructionPortfolio.noProjectsInCategory}
             </p>
             <Button 
               onClick={() => {
@@ -281,10 +283,9 @@ export default function KonstruksiPortfolioPage() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="bg-gradient-to-r from-primary/10 via-primary/5 to-background rounded-2xl p-8 md:p-12 text-center space-y-6"
         >
-          <h2 className="text-3xl md:text-4xl font-bold">Mulai Proyek Konstruksi Anda</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">{t.constructionPortfolio.startYourProject}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Dari konsep desain hingga implementasi, kami siap mewujudkan proyek impian Anda
-            di {site.serviceAreas.join(', ')} dan sekitarnya.
+            {t.constructionPortfolio.startYourProjectDesc} {language === 'id' ? 'di' : 'in'} {site.serviceAreas.join(', ')} {language === 'id' ? 'dan sekitarnya' : 'and surrounding areas'}.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button asChild size="lg">
@@ -340,7 +341,7 @@ export default function KonstruksiPortfolioPage() {
                     <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
                       {constructionCategories.find(c => c.value === selectedProject.category)?.icon}
                       {' '}
-                      {constructionCategories.find(c => c.value === selectedProject.category)?.label}
+                      {language === 'id' ? constructionCategories.find(c => c.value === selectedProject.category)?.labelId : constructionCategories.find(c => c.value === selectedProject.category)?.labelEn}
                     </span>
                     <span className="px-3 py-1 bg-muted rounded-full text-sm">
                       {getTypeLabel(selectedProject.type)}
@@ -361,7 +362,7 @@ export default function KonstruksiPortfolioPage() {
                       </span>
                     )}
                     <span className="flex items-center gap-1">
-                      📸 {selectedProject.images.length} gambar
+                      📸 {selectedProject.images.length} {t.constructionPortfolio.images}
                     </span>
                   </div>
                 </div>
@@ -484,7 +485,7 @@ export default function KonstruksiPortfolioPage() {
                 <div className="pt-6 border-t">
                   <Button asChild className="w-full" size="lg">
                     <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">
-                      Konsultasi Proyek Serupa
+                      {t.constructionPortfolio.consultSimilarProject}
                     </a>
                   </Button>
                 </div>

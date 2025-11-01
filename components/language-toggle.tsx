@@ -17,24 +17,28 @@ export function LanguageToggle() {
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
-      className="relative gap-2"
+      className="relative gap-2 hover:bg-primary/10 transition-all duration-200"
       aria-label="Toggle language"
     >
-      <Globe className="h-4 w-4" />
+      <Globe className="h-4 w-4 text-primary" />
       <div className="flex items-center gap-1">
         <motion.span
-          className={`text-xs font-medium transition-colors ${
-            language === 'id' ? 'text-primary' : 'text-muted-foreground'
+          className={`text-xs font-bold transition-all duration-200 ${
+            language === 'id' 
+              ? 'text-primary scale-110' 
+              : 'text-muted-foreground hover:text-foreground'
           }`}
           animate={{ scale: language === 'id' ? 1.1 : 1 }}
           transition={{ duration: 0.2 }}
         >
           ID
         </motion.span>
-        <span className="text-xs text-muted-foreground">|</span>
+        <span className="text-xs text-muted-foreground font-medium">|</span>
         <motion.span
-          className={`text-xs font-medium transition-colors ${
-            language === 'en' ? 'text-primary' : 'text-muted-foreground'
+          className={`text-xs font-bold transition-all duration-200 ${
+            language === 'en' 
+              ? 'text-primary scale-110' 
+              : 'text-muted-foreground hover:text-foreground'
           }`}
           animate={{ scale: language === 'en' ? 1.1 : 1 }}
           transition={{ duration: 0.2 }}

@@ -17,26 +17,28 @@ import {
 } from '@/components/ui/select';
 import { toast } from 'sonner';
 import { Loader2 } from 'lucide-react';
-
-const services = [
-  { value: 'renovasi', label: 'Renovasi Rumah & Ruko' },
-  { value: 'konstruksi', label: 'Konstruksi Bangunan' },
-  { value: 'interior', label: 'Interior & Finishing' },
-  { value: 'drafter', label: 'Drafter & Gambar Teknik (CAD)' },
-  { value: 'perbaikan', label: 'Perbaikan & Maintenance' },
-];
-
-const budgetRanges = [
-  { value: 'under-50', label: 'Di bawah 50 juta' },
-  { value: '50-100', label: '50 - 100 juta' },
-  { value: '100-250', label: '100 - 250 juta' },
-  { value: '250-500', label: '250 - 500 juta' },
-  { value: 'above-500', label: 'Di atas 500 juta' },
-  { value: 'flexible', label: 'Fleksibel (diskusi)' },
-];
+import { useLanguage } from '@/lib/i18n/context';
 
 export function EstimateForm() {
+  const { t } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const services = [
+    { value: 'renovasi', label: t.estimateForm.services.renovasi },
+    { value: 'konstruksi', label: t.estimateForm.services.konstruksi },
+    { value: 'interior', label: t.estimateForm.services.interior },
+    { value: 'drafter', label: t.estimateForm.services.drafter },
+    { value: 'perbaikan', label: t.estimateForm.services.perbaikan },
+  ];
+
+  const budgetRanges = [
+    { value: 'under-50', label: t.estimateForm.budgetRanges['under-50'] },
+    { value: '50-100', label: t.estimateForm.budgetRanges['50-100'] },
+    { value: '100-250', label: t.estimateForm.budgetRanges['100-250'] },
+    { value: '250-500', label: t.estimateForm.budgetRanges['250-500'] },
+    { value: 'above-500', label: t.estimateForm.budgetRanges['above-500'] },
+    { value: 'flexible', label: t.estimateForm.budgetRanges['flexible'] },
+  ];
   
   const {
     register,
@@ -74,10 +76,10 @@ export function EstimateForm() {
       window.open(whatsappURL, '_blank');
       
       // Reset form dan tampilkan success message
-      toast.success('Mengarahkan ke WhatsApp...');
+      toast.success(t.estimateForm.success);
       reset();
     } catch (error) {
-      toast.error('Terjadi kesalahan. Silakan coba lagi.');
+      toast.error(t.estimateForm.error);
     } finally {
       setIsSubmitting(false);
     }
@@ -87,10 +89,10 @@ export function EstimateForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="name">Nama Lengkap *</Label>
+          <Label htmlFor="name">{t.estimateForm.name} *</Label>
           <Input
             id="name"
-            placeholder="Nama Anda"
+            placeholder={t.estimateForm.namePlaceholder}
             {...register('name')}
             aria-invalid={!!errors.name}
           />
@@ -100,11 +102,11 @@ export function EstimateForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="phone">Nomor WhatsApp *</Label>
+          <Label htmlFor="phone">{t.estimateForm.phone} *</Label>
           <Input
             id="phone"
             type="tel"
-            placeholder="08xxxxxxxxxx"
+            placeholder={t.estimateForm.phonePlaceholder}
             {...register('phone')}
             aria-invalid={!!errors.phone}
           />
@@ -116,11 +118,11 @@ export function EstimateForm() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="email">Email (Opsional)</Label>
+          <Label htmlFor="email">{t.estimateForm.email}</Label>
           <Input
             id="email"
             type="email"
-            placeholder="email@example.com"
+            placeholder={t.estimateForm.emailPlaceholder}
             {...register('email')}
             aria-invalid={!!errors.email}
           />
@@ -130,10 +132,10 @@ export function EstimateForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="location">Lokasi Proyek *</Label>
+          <Label htmlFor="location">{t.estimateForm.location} *</Label>
           <Input
             id="location"
-            placeholder="Contoh: Mojokerto, Jawa Timur"
+            placeholder={t.estimateForm.locationPlaceholder}
             {...register('location')}
             aria-invalid={!!errors.location}
           />
@@ -145,10 +147,10 @@ export function EstimateForm() {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <Label htmlFor="service">Jenis Layanan *</Label>
+          <Label htmlFor="service">{t.estimateForm.projectType} *</Label>
           <Select onValueChange={(value) => setValue('service', value)}>
             <SelectTrigger id="service" aria-invalid={!!errors.service}>
-              <SelectValue placeholder="Pilih layanan" />
+              <SelectValue placeholder={t.estimateForm.projectTypePlaceholder} />
             </SelectTrigger>
             <SelectContent>
               {services.map((service) => (
@@ -164,10 +166,10 @@ export function EstimateForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="budget">Estimasi Budget *</Label>
+          <Label htmlFor="budget">{t.estimateForm.budget} *</Label>
           <Select onValueChange={(value) => setValue('budget', value)}>
             <SelectTrigger id="budget" aria-invalid={!!errors.budget}>
-              <SelectValue placeholder="Pilih range budget" />
+              <SelectValue placeholder={t.estimateForm.budgetPlaceholder} />
             </SelectTrigger>
             <SelectContent>
               {budgetRanges.map((range) => (
@@ -184,10 +186,10 @@ export function EstimateForm() {
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="description">Deskripsi Proyek *</Label>
+        <Label htmlFor="description">{t.estimateForm.description} *</Label>
         <Textarea
           id="description"
-          placeholder="Jelaskan detail proyek Anda: luas bangunan, kondisi saat ini, harapan hasil, timeline yang diinginkan, dll."
+          placeholder={t.estimateForm.descriptionPlaceholder}
           rows={6}
           {...register('description')}
           aria-invalid={!!errors.description}
@@ -206,15 +208,15 @@ export function EstimateForm() {
         {isSubmitting ? (
           <>
             <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            Mengirim...
+            {t.estimateForm.sending}
           </>
         ) : (
-          'Kirim Permintaan Estimasi'
+          t.estimateForm.submit
         )}
       </Button>
 
       <p className="text-sm text-muted-foreground text-center">
-        Tim kami akan menghubungi Anda dalam 1x24 jam
+        {t.estimateForm.responseTime}
       </p>
     </form>
   );

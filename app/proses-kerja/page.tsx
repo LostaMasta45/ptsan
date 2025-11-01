@@ -1,81 +1,56 @@
-import { Metadata } from 'next';
+'use client';
+
 import { MessageCircle, Search, FileText, Hammer, CheckCircle } from 'lucide-react';
-import { site } from '@/config/site';
-
-export const metadata: Metadata = {
-  title: 'Proses Kerja',
-  description: `Tahapan kerja profesional ${site.brand} dari konsultasi hingga serah terima proyek`,
-};
-
-const steps = [
-  {
-    number: 1,
-    icon: MessageCircle,
-    title: 'Konsultasi',
-    description: 'Diskusi kebutuhan, ide, dan budget proyek Anda dengan tim kami.',
-    details: [
-      'Diskusi via WhatsApp atau tatap muka',
-      'Identifikasi kebutuhan dan ekspektasi',
-      'Estimasi awal budget dan timeline',
-    ],
-  },
-  {
-    number: 2,
-    icon: Search,
-    title: 'Survey Lokasi',
-    description: 'Tim kami melakukan survey ke lokasi untuk pengukuran dan analisis kondisi.',
-    details: [
-      'Pengukuran detail lokasi',
-      'Analisis kondisi eksisting',
-      'Dokumentasi foto dan catatan teknis',
-    ],
-  },
-  {
-    number: 3,
-    icon: FileText,
-    title: 'RAB & Kontrak',
-    description: 'Penyusunan RAB detail, gambar kerja, dan penandatanganan kontrak.',
-    details: [
-      'RAB lengkap dengan spesifikasi material',
-      'Gambar kerja dan shop drawing (jika perlu)',
-      'Kontrak kerja dengan timeline jelas',
-      'Skema pembayaran termin',
-    ],
-  },
-  {
-    number: 4,
-    icon: Hammer,
-    title: 'Eksekusi & Quality Control',
-    description: 'Pelaksanaan proyek dengan pengawasan ketat dan update progres berkala.',
-    details: [
-      'Pengadaan material berkualitas',
-      'Pelaksanaan sesuai gambar kerja',
-      'Quality control di setiap tahap',
-      'Update progres mingguan via WhatsApp',
-    ],
-  },
-  {
-    number: 5,
-    icon: CheckCircle,
-    title: 'Serah Terima & Garansi',
-    description: 'Inspeksi akhir, dokumentasi, dan aktivasi garansi pekerjaan.',
-    details: [
-      'Inspeksi bersama klien',
-      'Dokumentasi foto hasil akhir',
-      'Serah terima dengan checklist lengkap',
-      'Garansi hingga 12 bulan',
-    ],
-  },
-];
+import { useLanguage } from '@/lib/i18n/context';
 
 export default function ProsesKerjaPage() {
+  const { t } = useLanguage();
+
+  const steps = [
+    {
+      number: 1,
+      icon: MessageCircle,
+      title: t.process.steps.consultation.title,
+      description: t.process.steps.consultation.description,
+      details: t.process.steps.consultation.details,
+    },
+    {
+      number: 2,
+      icon: Search,
+      title: t.process.steps.survey.title,
+      description: t.process.steps.survey.description,
+      details: t.process.steps.survey.details,
+    },
+    {
+      number: 3,
+      icon: FileText,
+      title: t.process.steps.estimate.title,
+      description: t.process.steps.estimate.description,
+      details: t.process.steps.estimate.details,
+    },
+    {
+      number: 4,
+      icon: Hammer,
+      title: t.process.steps.execution.title,
+      description: t.process.steps.execution.description,
+      details: t.process.steps.execution.details,
+    },
+    {
+      number: 5,
+      icon: CheckCircle,
+      title: t.process.steps.handover.title,
+      description: t.process.steps.handover.description,
+      details: t.process.steps.handover.details,
+    },
+  ];
+
   return (
     <div className="py-20">
       <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Proses Kerja Kami</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.processPage.title}</h1>
           <p className="text-lg text-muted-foreground">
-            Timeline jelas dan transparan untuk memastikan proyek Anda berjalan lancar
+            {t.processPage.subtitle}
           </p>
         </div>
 
@@ -124,10 +99,9 @@ export default function ProsesKerjaPage() {
         </div>
 
         <div className="mt-16 p-8 rounded-lg bg-primary/5 border border-primary/10 max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-4">Update Progres Berkala</h2>
+          <h2 className="text-2xl font-bold mb-4">{t.processPage.updateTitle}</h2>
           <p className="text-muted-foreground mb-6">
-            Kami memberikan update progres pekerjaan setiap minggu melalui WhatsApp lengkap dengan foto dokumentasi, 
-            sehingga Anda selalu tahu perkembangan proyek Anda.
+            {t.processPage.updateDesc}
           </p>
         </div>
       </div>

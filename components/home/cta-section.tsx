@@ -4,8 +4,11 @@ import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
 import { site } from '@/config/site';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n/context';
 
 export function CTASection() {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
       {/* Background Pattern */}
@@ -22,10 +25,10 @@ export function CTASection() {
           className="max-w-2xl mx-auto text-center space-y-6"
         >
           <h2 className="text-3xl md:text-4xl font-bold">
-            Siap Mulai Proyek di Mojokerto & Sekitarnya?
+            {t.cta.title}
           </h2>
           <p className="text-lg opacity-90">
-            Klik untuk konsultasi cepat bersama tim PT SAN.
+            {t.cta.subtitle}
           </p>
           <motion.div
             initial={{ scale: 0.9 }}
@@ -36,7 +39,7 @@ export function CTASection() {
             <Button size="lg" variant="secondary" asChild className="text-base shadow-xl hover:scale-105 transition-transform">
               <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
-                Chat WhatsApp Sekarang
+                {t.cta.button}
               </a>
             </Button>
           </motion.div>

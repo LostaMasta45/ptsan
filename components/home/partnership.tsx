@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import assetsManifest from '@/src/assets.manifest.json';
+import { useLanguage } from '@/lib/i18n/context';
 
 const partnerNames = [
   "Interior Tonic.png",
@@ -23,6 +24,8 @@ const partners = partnerNames.map(fileName => ({
 }));
 
 export function Partnership() {
+  const { t, language } = useLanguage();
+  
   return (
     <section className="py-16 bg-white">
       <div className="container px-4">
@@ -34,10 +37,10 @@ export function Partnership() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Dipercayai oleh Brand & Supplier
+            {t.partnership.title}
           </h2>
           <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
-            Kerja sama pemasok & mitra memastikan material tepat dan hasil konsisten.
+            {t.partnership.subtitle}
           </p>
         </motion.div>
 
@@ -67,7 +70,9 @@ export function Partnership() {
         </div>
 
         <p className="text-xs text-center text-muted-foreground mt-8">
-          Logo di atas adalah milik masing-masing pemilik merek.
+          {language === 'id' 
+            ? 'Logo di atas adalah milik masing-masing pemilik merek.'
+            : 'The logos above are the property of their respective owners.'}
         </p>
       </div>
     </section>

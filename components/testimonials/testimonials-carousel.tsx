@@ -5,9 +5,19 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback, useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { testimonials } from '@/data/testimonials';
+import { useLanguage } from '@/lib/i18n/context';
 
 export function TestimonialsCarousel() {
+  const { t } = useLanguage();
+  const testimonials = t.testimonials.items.map((item, index) => ({
+    id: (index + 1).toString(),
+    name: item.name,
+    location: item.location,
+    project: item.project,
+    rating: 5,
+    comment: item.comment,
+  }));
+
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'start',

@@ -112,22 +112,32 @@ export interface Translations {
   process: {
     title: string;
     subtitle: string;
+    button: string;
     steps: {
       consultation: {
         title: string;
         description: string;
+        details: string[];
       };
-      design: {
+      survey: {
         title: string;
         description: string;
+        details: string[];
       };
-      agreement: {
+      estimate: {
         title: string;
         description: string;
+        details: string[];
       };
       execution: {
         title: string;
         description: string;
+        details: string[];
+      };
+      handover: {
+        title: string;
+        description: string;
+        details: string[];
       };
     };
   };
@@ -136,6 +146,12 @@ export interface Translations {
   testimonials: {
     title: string;
     subtitle: string;
+    items: Array<{
+      name: string;
+      location: string;
+      project: string;
+      comment: string;
+    }>;
   };
 
   // CTA Section
@@ -196,6 +212,12 @@ export interface Translations {
   estimateForm: {
     title: string;
     subtitle: string;
+    name: string;
+    namePlaceholder: string;
+    phone: string;
+    phonePlaceholder: string;
+    email: string;
+    emailPlaceholder: string;
     projectType: string;
     projectTypePlaceholder: string;
     location: string;
@@ -208,6 +230,174 @@ export interface Translations {
     sending: string;
     success: string;
     error: string;
+    responseTime: string;
+    services: {
+      renovasi: string;
+      konstruksi: string;
+      interior: string;
+      drafter: string;
+      perbaikan: string;
+    };
+    budgetRanges: {
+      'under-50': string;
+      '50-100': string;
+      '100-250': string;
+      '250-500': string;
+      'above-500': string;
+      'flexible': string;
+    };
+  };
+
+  // About Page
+  about: {
+    title: string;
+    intro: string;
+    origin: string;
+    focus: string;
+    serviceAreaTitle: string;
+    serviceAreaDesc: string;
+    features: {
+      comprehensive: { title: string; desc: string };
+      experienced: { title: string; desc: string };
+      quality: { title: string; desc: string };
+      transparent: { title: string; desc: string };
+    };
+  };
+
+  // Services Page
+  servicesPage: {
+    title: string;
+    subtitle: string;
+    downloadCatalog: string;
+    downloadPDF: string;
+    interested: string;
+    requestEstimate: string;
+    details: {
+      renovation: string[];
+      construction: string[];
+      interior: string[];
+      drafter: string[];
+      maintenance: string[];
+    };
+  };
+
+  // Process Page
+  processPage: {
+    title: string;
+    subtitle: string;
+    updateTitle: string;
+    updateDesc: string;
+  };
+
+  // Testimonials Page
+  testimonialsPage: {
+    title: string;
+    subtitle: string;
+    stats: {
+      projectsCompleted: string;
+      averageRating: string;
+      satisfactionRate: string;
+    };
+    whyChooseTitle: string;
+    reasons: Array<{
+      title: string;
+      description: string;
+    }>;
+    ctaTitle: string;
+    ctaSubtitle: string;
+    ctaConsult: string;
+    ctaEstimate: string;
+  };
+
+  // Contact Page
+  contactPage: {
+    title: string;
+    subtitle: string;
+    sendMessage: string;
+    contactInfo: string;
+    officeAddress: string;
+    servingAreas: string;
+    andSurrounding: string;
+    whatsapp: string;
+    clickToChat: string;
+    email: string;
+    fiverr: string;
+    clickToOrderFiverr: string;
+    operatingHours: string;
+    monday: string;
+    saturday: string;
+    sunday: string;
+    fasterResponse: string;
+    fasterResponseDesc: string;
+    chatWhatsappNow: string;
+  };
+
+  // Estimate Page
+  estimatePage: {
+    title: string;
+    subtitle: string;
+    features: Array<{
+      title: string;
+      description: string;
+    }>;
+    whatYouGet: string;
+    benefits: string[];
+    orContact: string;
+  };
+
+  // Portfolio Pages
+  portfolioPage: {
+    title: string;
+    subtitle: string;
+    ctaTitle: string;
+    ctaSubtitle: string;
+    ctaWhatsapp: string;
+    ctaEstimate: string;
+    swipeToSee: string;
+  };
+
+  furniturePortfolio: {
+    title: string;
+    subtitle: string;
+    allCategories: string;
+    items: string;
+    clickToView: string;
+    renderImage: string;
+    construction: string;
+    noItems: string;
+    category: string;
+    viewAll: string;
+    date: string;
+    slide: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaWhatsapp: string;
+    ctaContact: string;
+    orderSimilar: string;
+    previous: string;
+    next: string;
+  };
+
+  constructionPortfolio: {
+    title: string;
+    subtitle: string;
+    projects: string;
+    allCategories: string;
+    allTypes: string;
+    clickToView: string;
+    slideOf: string;
+    filterByType: string;
+    renderLabel: string;
+    technicalLabel: string;
+    photoLabel: string;
+    noProjects: string;
+    noProjectsInCategory: string;
+    startYourProject: string;
+    startYourProjectDesc: string;
+    consultSimilarProject: string;
+    images: string;
+    category: string;
+    featuredProject: string;
   };
 
   // Common

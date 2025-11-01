@@ -1,92 +1,64 @@
+'use client';
+
 import Link from 'next/link';
 import { Hammer, Building2, Paintbrush, Ruler, Wrench, FileText, Download } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { site } from '@/config/site';
 import assetsManifest from '@/src/assets.manifest.json';
-import { Metadata } from 'next';
+import { useLanguage } from '@/lib/i18n/context';
 
-export const metadata: Metadata = {
-  title: 'Layanan',
-  description: `Layanan renovasi, konstruksi, interior, drafter CAD, dan maintenance oleh ${site.brand}`,
-};
-
-// ---- Fix 2: beri tipe eksplisit untuk item katalog ----
 type CatalogItem = { title: string; file: string };
 const catalogs: CatalogItem[] = (assetsManifest?.catalogs ?? []) as CatalogItem[];
 
-const services = [
-  {
-    id: 'renovasi',
-    icon: Hammer,
-    title: 'Renovasi Rumah & Ruko',
-    description: 'Upgrade fungsi & estetika dengan minim gangguan, hasil presisi.',
-    details: [
-      'Renovasi struktur dan fondasi',
-      'Perluasan bangunan',
-      'Modernisasi tampilan fasad',
-      'Perbaikan atap dan rangka',
-    ],
-  },
-  {
-    id: 'konstruksi',
-    icon: Building2,
-    title: 'Konstruksi Bangunan',
-    description: 'Fondasi kuat, struktur terukur, sesuai standar keselamatan.',
-    details: [
-      'Pembangunan rumah tinggal',
-      'Konstruksi ruko dan bangunan komersial',
-      'Struktur beton bertulang',
-      'Pengawasan kualitas material',
-    ],
-  },
-  {
-    id: 'interior',
-    icon: Paintbrush,
-    title: 'Interior & Finishing',
-    description: 'Plafon, lantai, cat, custom furniture—detail rapi, nyaman ditempati.',
-    details: [
-      'Desain dan eksekusi interior',
-      'Pemasangan plafon dan partisi',
-      'Furniture custom dan built-in',
-      'Finishing cat dan wallpaper',
-    ],
-  },
-  {
-    id: 'drafter',
-    icon: Ruler,
-    title: 'Drafter & Gambar Teknik (CAD)',
-    description: 'Gambar kerja 2D/3D, as-built, shop drawing, detail joinery & MEP dasar.',
-    details: [
-      'Gambar kerja arsitektur lengkap',
-      'Shop drawing furniture dan joinery',
-      'As-built drawing',
-      'Detail struktur dan MEP',
-      'Modeling 3D untuk presentasi',
-    ],
-  },
-  {
-    id: 'maintenance',
-    icon: Wrench,
-    title: 'Perbaikan & Maintenance',
-    description: 'Atap, dinding, kebocoran, instalasi—perbaikan cepat & rapi.',
-    details: [
-      'Perbaikan kebocoran atap',
-      'Renovasi kecil dan perbaikan',
-      'Maintenance rutin bangunan',
-      'Perbaikan instalasi listrik dan plambing',
-    ],
-  },
-];
-
 export default function LayananPage() {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      id: 'renovasi',
+      icon: Hammer,
+      title: t.services.renovation.title,
+      description: t.services.renovation.description,
+      details: t.servicesPage.details.renovation,
+    },
+    {
+      id: 'konstruksi',
+      icon: Building2,
+      title: t.services.construction.title,
+      description: t.services.construction.description,
+      details: t.servicesPage.details.construction,
+    },
+    {
+      id: 'interior',
+      icon: Paintbrush,
+      title: t.services.interior.title,
+      description: t.services.interior.problem,
+      details: t.servicesPage.details.interior,
+    },
+    {
+      id: 'drafter',
+      icon: Ruler,
+      title: t.services.drafter.title,
+      description: t.services.drafter.description,
+      details: t.servicesPage.details.drafter,
+    },
+    {
+      id: 'maintenance',
+      icon: Wrench,
+      title: t.services.maintenance.title,
+      description: t.services.maintenance.problem,
+      details: t.servicesPage.details.maintenance,
+    },
+  ];
+
   return (
     <div className="py-20">
       <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Layanan Kami</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t.servicesPage.title}</h1>
           <p className="text-lg text-muted-foreground">
-            Solusi lengkap untuk kebutuhan renovasi, konstruksi, dan drafter teknik Anda
+            {t.servicesPage.subtitle}
           </p>
         </div>
 
@@ -101,7 +73,6 @@ export default function LayananPage() {
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      {/* ---- Fix 1: pakai service.title, bukan catalog.title ---- */}
                       <CardTitle className="text-lg">{service.title}</CardTitle>
                       <CardDescription className="text-base">{service.description}</CardDescription>
                     </div>
@@ -124,7 +95,7 @@ export default function LayananPage() {
 
         {catalogs.length > 0 && (
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6 text-center">Download Katalog</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">{t.servicesPage.downloadCatalog}</h2>
             <div className="grid gap-4 md:grid-cols-2">
               {catalogs.map((catalog, idx) => (
                 <Card key={idx}>
@@ -143,7 +114,7 @@ export default function LayananPage() {
                         download
                       >
                         <Download className="mr-2 h-4 w-4" />
-                        Download PDF
+                        {t.servicesPage.downloadPDF}
                       </a>
                     </Button>
                   </CardContent>
@@ -155,10 +126,10 @@ export default function LayananPage() {
 
         <div className="text-center mt-12">
           <p className="text-lg text-muted-foreground mb-4">
-            Tertarik dengan layanan kami?
+            {t.servicesPage.interested}
           </p>
           <Button size="lg" asChild>
-            <Link href="/estimasi">Minta Estimasi Sekarang</Link>
+            <Link href="/estimasi">{t.servicesPage.requestEstimate}</Link>
           </Button>
         </div>
       </div>

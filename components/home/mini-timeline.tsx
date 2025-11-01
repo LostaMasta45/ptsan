@@ -4,48 +4,51 @@ import { Button } from '@/components/ui/button';
 import { MessageCircle, Search, FileText, Hammer, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-const steps = [
-  {
-    number: 1,
-    icon: MessageCircle,
-    title: 'Konsultasi',
-    description: 'Diskusi kebutuhan & budget',
-  },
-  {
-    number: 2,
-    icon: Search,
-    title: 'Survey',
-    description: 'Tinjau lokasi & ukur detail',
-  },
-  {
-    number: 3,
-    icon: FileText,
-    title: 'RAB & Kontrak',
-    description: 'Rincian biaya & kesepakatan',
-  },
-  {
-    number: 4,
-    icon: Hammer,
-    title: 'Eksekusi',
-    description: 'Pengerjaan sesuai jadwal',
-  },
-  {
-    number: 5,
-    icon: CheckCircle,
-    title: 'Serah Terima & Garansi',
-    description: 'Proyek selesai + garansi',
-  },
-];
+import { useLanguage } from '@/lib/i18n/context';
 
 export function MiniTimeline() {
+  const { t } = useLanguage();
+  
+  const steps = [
+    {
+      number: 1,
+      icon: MessageCircle,
+      title: t.process.steps.consultation.title,
+      description: t.process.steps.consultation.description.split('.')[0],
+    },
+    {
+      number: 2,
+      icon: Search,
+      title: t.process.steps.survey.title,
+      description: t.process.steps.survey.description.split('.')[0],
+    },
+    {
+      number: 3,
+      icon: FileText,
+      title: t.process.steps.estimate.title,
+      description: t.process.steps.estimate.description.split('.')[0],
+    },
+    {
+      number: 4,
+      icon: Hammer,
+      title: t.process.steps.execution.title,
+      description: t.process.steps.execution.description.split('.')[0],
+    },
+    {
+      number: 5,
+      icon: CheckCircle,
+      title: t.process.steps.handover.title,
+      description: t.process.steps.handover.description.split('.')[0],
+    },
+  ];
+  
   return (
     <section className="py-20 bg-white">
       <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Proses Kerja Kami</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.process.title}</h2>
           <p className="text-muted-foreground">
-            5 langkah sistematis untuk memastikan proyek Anda berjalan lancar
+            {t.process.subtitle}
           </p>
         </div>
 
@@ -88,7 +91,7 @@ export function MiniTimeline() {
 
         <div className="text-center mt-12">
           <Button size="lg" variant="outline" asChild>
-            <Link href="/proses-kerja">Lihat Proses Lengkap</Link>
+            <Link href="/proses-kerja">{t.common.learnMore}</Link>
           </Button>
         </div>
       </div>
