@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   ReactCompareSlider,
-  ReactCompareSliderImage,
   ReactCompareSliderHandle,
 } from 'react-compare-slider';
 import { MoveHorizontal } from 'lucide-react';
@@ -14,6 +14,7 @@ interface BeforeAfterSliderProps {
   afterImage: string;
   title?: string;
   location?: string;
+  priority?: boolean;
 }
 
 export function BeforeAfterSlider({
@@ -21,6 +22,7 @@ export function BeforeAfterSlider({
   afterImage,
   title,
   location,
+  priority = false,
 }: BeforeAfterSliderProps) {
   const [isActive, setIsActive] = useState(false);
   const [showButton, setShowButton] = useState(true);
@@ -116,18 +118,30 @@ export function BeforeAfterSlider({
           position={position}
           onPositionChange={handlePositionChange}
           itemOne={
-            <ReactCompareSliderImage
-              src={beforeImage}
-              alt={`${title || 'Proyek'} - Sebelum`}
-              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-            />
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+              <Image
+                src={beforeImage}
+                alt={`${title || 'Proyek'} - Sebelum`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{ objectFit: 'cover' }}
+                priority={priority}
+                loading={priority ? undefined : 'lazy'}
+              />
+            </div>
           }
           itemTwo={
-            <ReactCompareSliderImage
-              src={afterImage}
-              alt={`${title || 'Proyek'} - Sesudah`}
-              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-            />
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+              <Image
+                src={afterImage}
+                alt={`${title || 'Proyek'} - Sesudah`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{ objectFit: 'cover' }}
+                priority={priority}
+                loading={priority ? undefined : 'lazy'}
+              />
+            </div>
           }
           handle={
             <ReactCompareSliderHandle

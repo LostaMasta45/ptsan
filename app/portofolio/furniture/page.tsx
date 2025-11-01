@@ -121,6 +121,9 @@ export default function FurniturePortfolioPage() {
                     alt={item.name}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                    quality={85}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
@@ -277,6 +280,8 @@ export default function FurniturePortfolioPage() {
                     alt={`${selectedItem.name} - Slide ${currentSlide + 1}`}
                     fill
                     className="object-contain"
+                    quality={90}
+                    sizes="(max-width: 1536px) 100vw, 1536px"
                   />
                   
                   {/* Slide Navigation Arrows */}

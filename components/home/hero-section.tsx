@@ -79,6 +79,7 @@ export function HeroSection() {
               beforeImage="/before-after/3_before.png"
               afterImage="/before-after/3_after.png"
               title="Contoh Transformasi Proyek Kami"
+              priority={true}
             />
           </motion.div>
         </div>

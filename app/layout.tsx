@@ -10,9 +10,11 @@ import { ImageProtection } from "@/components/image-protection";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/seo/json-ld";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export const dynamic = 'force-dynamic';
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: "swap",
+  preload: true
+});
 
 export const metadata: Metadata = {
   title: {

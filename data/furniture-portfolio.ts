@@ -63,9 +63,9 @@ export const furnitureItems: FurnitureItem[] = [
     code: '158-710',
     name: 'Wastafel Table',
     category: 'vanity',
-    renderImage: '/media/portfolio/furniture/BARU/158-710-WASTAFEL-TABLE_12-02-2025/158-710 WASTAFEL TABLE_Slide_1.jpg',
+    renderImage: '/media/portfolio/furniture/BARU/158-710-WASTAFEL-TABLE_12-02-2025/158-710 WASTAFEL TABLE_12-02-2025_page-0001.jpg',
     constructionImages: [
-      '/media/portfolio/furniture/BARU/158-710-WASTAFEL-TABLE_12-02-2025/158-710 WASTAFEL TABLE_Slide_2.jpg'
+      '/media/portfolio/furniture/BARU/158-710-WASTAFEL-TABLE_12-02-2025/158-710 WASTAFEL TABLE_12-02-2025_page-0002.jpg'
     ],
     description: 'Meja wastafel custom dengan storage optimal',
     date: '12-02-2025'
