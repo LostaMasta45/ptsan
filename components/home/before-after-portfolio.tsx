@@ -3,6 +3,7 @@
 import { BeforeAfterSlider } from '@/components/portfolio/before-after-slider';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { useLanguage } from '@/lib/i18n/context';
 
 const beforeAfterPairs = Array.from({ length: 20 }, (_, i) => {
   const num = i + 1;
@@ -14,16 +15,17 @@ const beforeAfterPairs = Array.from({ length: 20 }, (_, i) => {
 });
 
 export function BeforeAfterPortfolio() {
+  const { t } = useLanguage();
+  
   return (
     <section className="py-16 md:py-24">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Portofolio Before & After
+            {t.portfolio.title}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Lihat transformasi nyata dari setiap proyek yang kami kerjakan.
-            Geser untuk melihat perubahan sebelum dan sesudah.
+            {t.portfolio.subtitle}
           </p>
         </div>
 
@@ -33,7 +35,7 @@ export function BeforeAfterPortfolio() {
               key={pair.id}
               beforeImage={pair.before}
               afterImage={pair.after}
-              title={`Proyek ${pair.id}`}
+              title={`${t.portfolio.project} ${pair.id}`}
             />
           ))}
         </div>
@@ -41,7 +43,7 @@ export function BeforeAfterPortfolio() {
         <div className="text-center">
           <Button asChild size="lg">
             <Link href="/portofolio">
-              Lihat Semua Portofolio
+              {t.portfolio.viewAll}
             </Link>
           </Button>
         </div>

@@ -6,8 +6,11 @@ import { MessageCircle, Calculator, CheckCircle2, MapPin, Shield } from 'lucide-
 import { site } from '@/config/site';
 import { motion } from 'framer-motion';
 import { BeforeAfterSlider } from '@/components/portfolio/before-after-slider';
+import { useLanguage } from '@/lib/i18n/context';
 
 export function HeroSection() {
+  const { t } = useLanguage();
+  
   return (
     <section className="relative bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Gradient Overlay */}
@@ -19,15 +22,15 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-sm">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4" />
-              <span>Gratis Survey</span>
+              <span>{t.hero.freeSurvey}</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>Area Jawa Timur & Seluruh Indonesia</span>
+              <span>{t.hero.serviceArea}</span>
             </div>
             <div className="flex items-center gap-2">
               <Shield className="h-4 w-4" />
-              <span>Garansi s/d 12 bln</span>
+              <span>{t.hero.warranty}</span>
             </div>
           </div>
         </div>
@@ -45,10 +48,10 @@ export function HeroSection() {
           >
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-                Renovasi & Kontruksi Tanpa Drama, <span className="text-accent">Hasil Berkualitas , Kuat & Terpercaya</span>
+                {t.hero.title} <span className="text-accent">{t.hero.titleHighlight}</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground">
-                Desain, gambar kerja (CAD), hingga eksekusi—tepat waktu, transparan, profesional.
+                {t.hero.subtitle}
               </p>
             </div>
 
@@ -56,13 +59,13 @@ export function HeroSection() {
               <Button size="lg" variant="default" asChild className="text-base">
                 <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-5 w-5" />
-                  Konsultasi WhatsApp
+                  {t.hero.ctaWhatsapp}
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild className="text-base">
                 <Link href="/estimasi">
                   <Calculator className="mr-2 h-5 w-5" />
-                  Minta Estimasi
+                  {t.hero.ctaEstimate}
                 </Link>
               </Button>
             </div>
@@ -78,7 +81,7 @@ export function HeroSection() {
             <BeforeAfterSlider
               beforeImage="/before-after/3_before.png"
               afterImage="/before-after/3_after.png"
-              title="Contoh Transformasi Proyek Kami"
+              title={t.hero.transformationExample}
               priority={true}
             />
           </motion.div>

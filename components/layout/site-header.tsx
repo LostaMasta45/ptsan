@@ -6,27 +6,30 @@ import Image from 'next/image';
 import { Menu, X, MessageCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { site } from '@/config/site';
-
-const portfolioItems = [
-  { name: 'Before & After', href: '/portofolio' },
-  { name: 'Furniture', href: '/portofolio/furniture' },
-  { name: 'Konstruksi', href: '/portofolio/konstruksi' },
-];
-
-const navigation = [
-  { name: 'Beranda', href: '/' },
-  { name: 'Tentang Kami', href: '/tentang-kami' },
-  { name: 'Layanan', href: '/layanan' },
-  { name: 'Portofolio', href: '/portofolio', hasDropdown: true },
-  { name: 'Proses Kerja', href: '/proses-kerja' },
-  { name: 'Testimoni', href: '/testimoni' },
-  { name: 'Kontak', href: '/kontak' },
-];
+import { useLanguage } from '@/lib/i18n/context';
+import { LanguageToggle } from '@/components/language-toggle';
 
 export function SiteHeader() {
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+  const portfolioItems = [
+    { name: t.portfolio.title, href: '/portofolio' },
+    { name: t.serviceChips.furniture, href: '/portofolio/furniture' },
+    { name: t.serviceChips.construction, href: '/portofolio/konstruksi' },
+  ];
+
+  const navigation = [
+    { name: t.nav.home, href: '/' },
+    { name: t.nav.aboutUs, href: '/tentang-kami' },
+    { name: t.nav.services, href: '/layanan' },
+    { name: t.nav.portfolio, href: '/portofolio', hasDropdown: true },
+    { name: t.nav.process, href: '/proses-kerja' },
+    { name: t.nav.testimonials, href: '/testimoni' },
+    { name: t.nav.contact, href: '/kontak' },
+  ];
 
   const handleMouseEnter = () => {
     if (timeoutId) {
@@ -106,11 +109,13 @@ export function SiteHeader() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <LanguageToggle />
+          
           <Button asChild className="hidden sm:inline-flex">
             <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 h-4 w-4" />
-              Konsultasi
+              {t.hero.ctaWhatsapp.split(' ')[0]}
             </a>
           </Button>
 
@@ -167,10 +172,13 @@ export function SiteHeader() {
                 </Link>
               )
             ))}
-            <Button asChild className="w-full mt-4">
+            <div className="pt-2 border-t mt-2">
+              <LanguageToggle />
+            </div>
+            <Button asChild className="w-full mt-2">
               <a href={site.whatsappLink} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-4 w-4" />
-                Konsultasi WhatsApp
+                {t.hero.ctaWhatsapp}
               </a>
             </Button>
           </div>

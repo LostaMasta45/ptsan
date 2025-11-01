@@ -5,58 +5,60 @@ import { Hammer, Building2, Paintbrush, Ruler, Wrench, ArrowRight } from 'lucide
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
-
-const services = [
-  {
-    id: 'renovasi',
-    icon: Hammer,
-    title: 'Renovasi Rumah & Ruko',
-    problem: 'Ruang kurang efisien, tampilan usang',
-    solution: 'Redesign layout + RAB transparan',
-    result: 'Rumah lebih lega & rapi, hemat biaya',
-  },
-  {
-    id: 'konstruksi',
-    icon: Building2,
-    title: 'Konstruksi Bangunan',
-    problem: 'Butuh bangunan baru yang kuat',
-    solution: 'Fondasi terukur + struktur kokoh',
-    result: 'Bangunan aman, tahan lama',
-  },
-  {
-    id: 'interior',
-    icon: Paintbrush,
-    title: 'Interior & Finishing',
-    problem: 'Ruangan terasa hambar & kurang nyaman',
-    solution: 'Custom furniture + finishing premium',
-    result: 'Interior cantik, nyaman ditempati',
-  },
-  {
-    id: 'drafter',
-    icon: Ruler,
-    title: 'Drafter & Gambar Teknik (CAD)',
-    problem: 'Perlu gambar kerja untuk izin/eksekusi',
-    solution: 'Gambar 2D/3D detail & akurat',
-    result: 'Dokumen lengkap, proses lancar',
-  },
-  {
-    id: 'maintenance',
-    icon: Wrench,
-    title: 'Perbaikan & Maintenance',
-    problem: 'Kebocoran, kerusakan mengganggu',
-    solution: 'Perbaikan cepat & tepat sasaran',
-    result: 'Masalah teratasi, bangunan awet',
-  },
-];
+import { useLanguage } from '@/lib/i18n/context';
 
 export function ServiceGrid() {
+  const { t } = useLanguage();
+  
+  const services = [
+    {
+      id: 'renovasi',
+      icon: Hammer,
+      title: t.services.renovation.title,
+      problem: t.services.renovation.problem,
+      solution: t.services.renovation.solution,
+      result: t.services.renovation.result,
+    },
+    {
+      id: 'konstruksi',
+      icon: Building2,
+      title: t.services.construction.title,
+      problem: t.services.construction.problem,
+      solution: t.services.construction.solution,
+      result: t.services.construction.result,
+    },
+    {
+      id: 'interior',
+      icon: Paintbrush,
+      title: t.services.interior.title,
+      problem: t.services.interior.problem,
+      solution: t.services.interior.solution,
+      result: t.services.interior.result,
+    },
+    {
+      id: 'drafter',
+      icon: Ruler,
+      title: t.services.drafter.title,
+      problem: t.services.drafter.problem,
+      solution: t.services.drafter.solution,
+      result: t.services.drafter.result,
+    },
+    {
+      id: 'maintenance',
+      icon: Wrench,
+      title: t.services.maintenance.title,
+      problem: t.services.maintenance.problem,
+      solution: t.services.maintenance.solution,
+      result: t.services.maintenance.result,
+    },
+  ];
   return (
     <section id="layanan" className="py-20 bg-slate-50">
       <div className="container px-4">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Layanan Kami</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t.services.title}</h2>
           <p className="text-muted-foreground">
-            Solusi lengkap untuk setiap masalah renovasi dan konstruksi Anda
+            {t.services.subtitle}
           </p>
         </div>
 
@@ -80,21 +82,21 @@ export function ServiceGrid() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div>
-                      <div className="text-xs font-semibold text-red-600 mb-1">❌ Masalah</div>
+                      <div className="text-xs font-semibold text-red-600 mb-1">❌ {t.services.problemLabel}</div>
                       <p className="text-sm text-muted-foreground">{service.problem}</p>
                     </div>
                     <div className="flex items-center justify-center py-1">
                       <ArrowRight className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <div className="text-xs font-semibold text-accent mb-1">🔧 Solusi SAN</div>
+                      <div className="text-xs font-semibold text-accent mb-1">🔧 {t.services.solutionLabel}</div>
                       <p className="text-sm text-muted-foreground">{service.solution}</p>
                     </div>
                     <div className="flex items-center justify-center py-1">
                       <ArrowRight className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <div className="text-xs font-semibold text-green-600 mb-1">✅ Hasil</div>
+                      <div className="text-xs font-semibold text-green-600 mb-1">✅ {t.services.resultLabel}</div>
                       <p className="text-sm font-medium">{service.result}</p>
                     </div>
                   </CardContent>
@@ -106,7 +108,7 @@ export function ServiceGrid() {
 
         <div className="text-center mt-12">
           <Button size="lg" variant="outline" asChild>
-            <Link href="/layanan">Lihat Detail Layanan</Link>
+            <Link href="/layanan">{t.services.viewDetails}</Link>
           </Button>
         </div>
       </div>

@@ -8,6 +8,7 @@ import {
 } from 'react-compare-slider';
 import { MoveHorizontal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/lib/i18n/context';
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -24,6 +25,7 @@ export function BeforeAfterSlider({
   location,
   priority = false,
 }: BeforeAfterSliderProps) {
+  const { t } = useLanguage();
   const [isActive, setIsActive] = useState(false);
   const [showButton, setShowButton] = useState(true);
   const [position, setPosition] = useState(50);
@@ -197,10 +199,10 @@ export function BeforeAfterSlider({
 
         {/* Labels - Before & After */}
         <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-          Sebelum
+          {t.portfolio.before}
         </div>
         <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-          Sesudah
+          {t.portfolio.after}
         </div>
       </div>
       

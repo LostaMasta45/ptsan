@@ -9,6 +9,7 @@ import { FloatingCTA } from "@/components/floating-cta";
 import { ImageProtection } from "@/components/image-protection";
 import { LocalBusinessSchema, OrganizationSchema } from "@/components/seo/json-ld";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { LanguageProvider } from "@/lib/i18n/context";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -46,13 +47,15 @@ export default function RootLayout({
         <OrganizationSchema />
       </head>
       <body className={inter.className}>
-        <ImageProtection />
-        <SiteHeader />
-        <main className="min-h-screen">{children}</main>
-        <SiteFooter />
-        <FloatingCTA />
-        <Toaster position="top-center" richColors />
-        <SpeedInsights />
+        <LanguageProvider>
+          <ImageProtection />
+          <SiteHeader />
+          <main className="min-h-screen">{children}</main>
+          <SiteFooter />
+          <FloatingCTA />
+          <Toaster position="top-center" richColors />
+          <SpeedInsights />
+        </LanguageProvider>
       </body>
     </html>
   );
